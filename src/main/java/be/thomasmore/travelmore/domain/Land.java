@@ -1,19 +1,22 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Land")
+@Table(name = "land")
+
 public class Land {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "naam")
     private String naam;
 
-    @OneToMany
-    private List<Land> landen;
+    @OneToMany(mappedBy = "id")
+    private List<Land> landen = new ArrayList<>();
 
     public Land() {
     }

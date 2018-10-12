@@ -1,19 +1,22 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "betalingType")
+
 public class BetalingType {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(name = "naam")
     private String naam;
-    @OneToMany
-    private ArrayList<Betaling> betalingen;
+
+    @OneToMany(mappedBy = "id")
+    private List<Betaling> betalingen = new ArrayList<>();
 
     public BetalingType() {
     }
@@ -34,7 +37,7 @@ public class BetalingType {
         this.naam = naam;
     }
 
-    public ArrayList<Betaling> getBetalingen() {
+    public List<Betaling> getBetalingen() {
         return betalingen;
     }
 
