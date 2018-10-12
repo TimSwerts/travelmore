@@ -24,6 +24,11 @@ public class Reis {
     @ManyToOne
     private Transportmiddel transportmiddel;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 24d8631915fe737d00a02ce891530ea5f8e152a2
     public Reis() {
     }
 
