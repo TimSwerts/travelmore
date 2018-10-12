@@ -2,6 +2,8 @@ package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class BetalingType {
@@ -11,7 +13,7 @@ public class BetalingType {
     @Column(name = "naam")
     private String naam;
     @OneToMany(mappedBy = "betalingType")
-    private List<Betaling> betalingen = new ArrayList<Betaling>();
+    private List<Betaling> betalingen;
 
     public BetalingType() {
     }
@@ -32,11 +34,11 @@ public class BetalingType {
         this.naam = naam;
     }
 
-    public ArrayList<Betaling> getBetalingen() {
+    public List<Betaling> getBetalingen() {
         return betalingen;
     }
 
-    public void setBetalingen(ArrayList<Betaling> betalingen) {
+    public void setBetalingen(List<Betaling> betalingen) {
         this.betalingen = betalingen;
     }
 }
