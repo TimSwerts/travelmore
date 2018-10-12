@@ -4,17 +4,19 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
 @Table(name = "betalingType")
+
 public class BetalingType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(name = "naam")
     private String naam;
-    @OneToMany(mappedBy = "betalingType")
-    private List<Betaling> betalingen;
+
+    @OneToMany(mappedBy = "id")
+    private List<Betaling> betalingen = new ArrayList<>();
 
     public BetalingType() {
     }

@@ -6,16 +6,21 @@ import javax.validation.constraints.Size;
 @DiscriminatorColumn (name = "PERSOONTYPE", discriminatorType = DiscriminatorType.STRING)
 @Entity
 @Table(name = "persoon")
+
 public class Persoon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(name = "voornaam")
     private String voornaam;
+
     @Column(name = "achternaam")
     private String achternaam;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "wachtwoord")
     private String wachtwoord;
 

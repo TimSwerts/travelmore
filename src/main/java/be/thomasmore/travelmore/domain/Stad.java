@@ -1,13 +1,15 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Stad")
+@Table(name = "stad")
 
 public class Stad {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "naam")
@@ -16,11 +18,11 @@ public class Stad {
     @ManyToOne
     private Land land;
 
-    @OneToMany
-    private List<Reis> bestemmingen;
+    @OneToMany(mappedBy = "id")
+    private List<Reis> bestemmingen = new ArrayList<>();
 
-    @OneToMany
-    private List<Reis> vertreklocaties;
+    @OneToMany(mappedBy = "id")
+    private List<Reis> vertreklocaties = new ArrayList<>();
 
     public Stad() {
     }
