@@ -11,7 +11,7 @@ public class BetalingType {
     @Column(name = "naam")
     private String naam;
     @OneToMany(mappedBy = "betalingType")
-    private ArrayList<Betaling> betalingen;
+    private List<Betaling> betalingen = new ArrayList<Betaling>();
 
     public BetalingType() {
     }
