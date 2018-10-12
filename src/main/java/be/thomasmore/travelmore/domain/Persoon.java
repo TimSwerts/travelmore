@@ -2,7 +2,7 @@ package be.thomasmore.travelmore.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn (name = "PERSOONTYPE", discriminatorType = DiscriminatorType.STRING)
 @Entity
 @Table(name = "persoon")

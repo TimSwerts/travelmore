@@ -6,6 +6,7 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "betalingType")
 public class BetalingType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
