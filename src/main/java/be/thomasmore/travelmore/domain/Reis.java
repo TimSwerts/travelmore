@@ -24,9 +24,6 @@ public class Reis {
     @ManyToOne
     private Transportmiddel transportmiddel;
 
-    @OneToMany(mappedBy = "id")
-    private List<Reis> reizen = new ArrayList<>();
-
     public Reis() {
     }
 
@@ -62,19 +59,11 @@ public class Reis {
         this.beschrijving = beschrijving;
     }
 
-    public List<Reis> getReizen() {
-        return reizen;
-    }
-
     public Transportmiddel getTransportmiddel() {
         return transportmiddel;
     }
 
     public void setTransportmiddel(Transportmiddel transportmiddel) {
         this.transportmiddel = transportmiddel;
-    }
-
-    public void setReizen(List<Reis> reizen) {
-        this.reizen = reizen;
     }
 }
