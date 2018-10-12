@@ -6,12 +6,13 @@ import java.util.Date;
 @Entity
 public class Betaling {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "bedrag")
     private double bedrag;
     @Column(name = "datum")
     private Date datum;
-    @ManyToOne
+    @ManyToOne()
     private BetalingType betalingType;
 
     public Betaling() {

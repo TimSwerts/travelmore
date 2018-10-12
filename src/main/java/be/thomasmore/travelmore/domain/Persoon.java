@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 @Table(name = "persoon")
 public class Persoon {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "voornaam")
     private String voornaam;
