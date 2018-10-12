@@ -41,7 +41,7 @@ public class BetalingType {
         return betalingen;
     }
 
-    public void setBetalingen(ArrayList<Betaling> betalingen) {
+    public void setBetalingen(List<Betaling> betalingen) {
         this.betalingen = betalingen;
     }
 }
