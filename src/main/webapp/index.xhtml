@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="./resources/css/style.css"/>
 </h:head>
 <h:body class="bg-image">
+    <div class="row navbar-row">
+        <ul class="navbar">
+            <li><h:commandButton value="Login" action="login" class="main-btn"/></li>
+        </ul>
+    </div>
     <div class="container">
         <h:form id="search">
             <div class="row search-row">
@@ -23,7 +28,8 @@
                     <p:inputText class="u-full-width" id="endLocation" value="" placeholder="End location"/>
                 </div>
 
-                <h:commandButton value="Search" class="search-btn" action="#{locationController.submit}" update=":locationDataTable"/>
+                <h:commandButton value="Search" class="main-btn search-btn" action="#{locationController.submit}"
+                                 update=":locationDataTable"/>
             </div>
 
         </h:form>
