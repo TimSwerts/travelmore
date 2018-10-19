@@ -1,19 +1,19 @@
+body{
+    margin: 0;
+    padding: 0;
+}
 .bg-image {
     position: relative;
     display: table;
     width: 100%;
-    height: auto;
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    height: 100vh;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
     url(../images/bg-image.jpg);
-    background-position: 100% 20%;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .search-row{
-    margin-top: 8rem;
+    margin-top: 25rem;
     padding: 3rem;
     background-color: rgba(19,26,32,0.70);
     color: #fff;
