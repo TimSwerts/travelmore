@@ -21,14 +21,22 @@ body {
     border-radius: 20px;
 }
 
-.main-btn {
+.btn {
     background-color: transparent;
     color: #fff !important;
     font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.search-button{
+.btn-search{
     margin-top: 2rem !important;
+}
+
+.btn-login{
+    position: absolute;
+    right: 30px;
+    height: 44px !important;
 }
 
 .navbar-row {
@@ -37,7 +45,7 @@ body {
     background-color: rgba(19, 26, 32, 0.70);
     height: 4.5rem;
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .navbar {

@@ -13,7 +13,7 @@
 <h:body class="bg-image">
     <div class="row navbar-row">
         <ul class="navbar">
-            <li><h:commandButton value="Login" action="login" class="main-btn"/></li>
+            <li><h:button value="Login" outcome="login.xhtml" class="btn btn-login"/></li>
         </ul>
     </div>
     <div class="container">
@@ -28,7 +28,7 @@
                     <p:inputText class="u-full-width" id="endLocation" value="" placeholder="End location"/>
                 </div>
 
-                <h:commandButton value="Search" class="main-btn search-btn" action="#{locationController.submit}"
+                <h:commandButton value="Search" class="btn btn-search" action="#{locationController.submit}"
                                  update=":locationDataTable"/>
             </div>
 
