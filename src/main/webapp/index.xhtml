@@ -8,28 +8,15 @@
 <h:head><title>Travel More!</title></h:head>
 <h:body>
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="location" value="#{locationController.locations}" id="locationDataTable">
-        <p:column headerText="Id">
-            <h:outputText value="#{location.id}" />
-        </p:column>
-
-        <p:column headerText="Name">
-            <h:outputText value="#{location.name}" />
-        </p:column>
-
-        <p:column headerText="Code">
-            <h:outputText value="#{location.code}" />
-        </p:column>
-    </p:dataTable>
-    <h:form id="addLocationForm">
+    <h:form id="search">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
-            <h:panelGrid columns="4" cellpadding="5">
-                <h:outputLabel for="locationName" value="Name:" />
-                <p:inputText id="locationName" value="#{locationController.newLocation.name}"></p:inputText>
-                <h:outputLabel for="locationCode" value="Code:" />
-                <p:inputText id="locationCode" value="#{locationController.newLocation.code}">
+            <h:panelGrid columns="5" cellpadding="5">
+                <h:outputLabel for="startLocation" value="Start: " />
+                <p:inputText id="startLocation" value=""></p:inputText>
+                <h:outputLabel for="endLocation" value="Code:" />
+                <p:inputText id="endLocation" value="">
                 </p:inputText>
-                <h:commandButton value="Toevoegen" action="#{locationController.submit}" update=":locationDataTable" />
+                <h:commandButton value="Search" action="#{locationController.submit}" update=":locationDataTable" />
             </h:panelGrid>
         </p:panel>
     </h:form>
