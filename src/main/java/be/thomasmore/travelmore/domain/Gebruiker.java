@@ -1,18 +1,25 @@
 package be.thomasmore.travelmore.domain;
 
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @DiscriminatorValue("Gebruiker")
 @Entity
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Gebruiker.FIND_ALL,
+                        query = "SELECT p from Persoon p "
+                )
+        }
+)
 
 public class Gebruiker extends Persoon {
+    public static final String FIND_ALL = "Gebruiker.findAll";
+
     @Column(name = "rijksregisternummer")
     private String rijksregisternummer;
 
