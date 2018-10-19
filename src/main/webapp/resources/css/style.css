@@ -1,7 +1,8 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
+
 .bg-image {
     position: relative;
     display: table;
@@ -12,16 +13,44 @@ body{
     background-repeat: no-repeat;
 }
 
-.search-row{
+.search-row {
     margin-top: 25rem;
     padding: 3rem;
-    background-color: rgba(19,26,32,0.70);
+    background-color: rgba(19, 26, 32, 0.70);
     color: #fff;
     border-radius: 20px;
 }
-.search-btn{
+
+.btn {
     background-color: transparent;
     color: #fff !important;
     font-weight: bold !important;
-    margin-top: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-search{
+    margin-top: 2rem !important;
+}
+
+.btn-login{
+    position: absolute;
+    right: 30px;
+    height: 44px !important;
+}
+
+.navbar-row {
+    position: absolute;
+    top: 0px;
+    background-color: rgba(19, 26, 32, 0.70);
+    height: 4.5rem;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.navbar {
+    list-style-type: none;
+}
+.navbar li {
+    float: left;
 }
