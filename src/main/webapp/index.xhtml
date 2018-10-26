@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Travel More!</title>
     <link rel="stylesheet" href="./resources/css/skeleton.css"/>
@@ -21,17 +21,24 @@
             <div class="row search-row">
                 <div class="six columns">
                     <h:outputLabel for="startLocation" value="From: "/>
-                    <p:inputText class="u-full-width" id="startLocation" value="" placeholder="Start location"/>
+
+
+                    <h:selectOneMenu class="u-full-width" id="startLocation" placeholder="Start location">
+                        <f:selectItem itemLabel="Select departure country" noSelectionOption="true" />
+                        <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}" itemLabel="#{land.naam}" />
+                    </h:selectOneMenu>
                 </div>
                 <div class="six columns">
                     <h:outputLabel for="endLocation" value="To:"/>
-                    <p:inputText class="u-full-width" id="endLocation" value="" placeholder="End location"/>
+
+                    <h:selectOneMenu class="u-full-width" id="endLocation">
+                        <f:selectItem itemLabel="Select country of arrival" noSelectionOption="true" />
+                        <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}" itemLabel="#{land.naam}" />
+                    </h:selectOneMenu>
                 </div>
 
-                <h:commandButton value="Search" class="btn btn-search" action="#{locationController.submit}"
-                                 update=":locationDataTable"/>
+                <h:commandButton value="Search" class="btn btn-search" action="#{locationController.submit}" update=":locationDataTable"/>
             </div>
-
         </h:form>
     </div>
 </h:body>
