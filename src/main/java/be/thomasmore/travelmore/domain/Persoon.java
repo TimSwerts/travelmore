@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 public class Persoon {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "voornaam")

@@ -7,9 +7,20 @@ import java.util.List;
 @Entity
 @Table(name = "stad")
 
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Stad.FIND_ALL,
+                        query = "SELECT s from Stad s "
+                )
+        }
+)
+
 public class Stad {
+    public static final String FIND_ALL = "Stad.findAll";
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "naam")
