@@ -22,6 +22,7 @@ public class Persoon {
     private String email;
 
     @Column(name = "wachtwoord")
+    @Size(max = 255)
     private String wachtwoord;
 
     public Persoon() {
