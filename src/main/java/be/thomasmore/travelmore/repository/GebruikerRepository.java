@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+
 public class GebruikerRepository {
     @PersistenceContext(unitName = "travelMorePU")
     private EntityManager entityManager;
