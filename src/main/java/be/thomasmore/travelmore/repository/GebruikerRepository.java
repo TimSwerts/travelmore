@@ -23,4 +23,10 @@ public class GebruikerRepository {
     public void insert(Gebruiker gebruiker){
         entityManager.persist(gebruiker);
     }
+
+    public Gebruiker findByEmail(String email) {
+        return entityManager.createQuery(
+                "SELECT u from Persoon u WHERE u.email = :email", Gebruiker.class).
+                setParameter("email", email).getSingleResult();
+    }
 }

@@ -12,14 +12,14 @@ import java.util.Date;
 
 @ManagedBean
 @ViewScoped
-public class GebruikerController implements Serializable  {
+public class GebruikerController implements Serializable {
     private Gebruiker newGebruiker = new Gebruiker();
 
 
     @Inject
     private GebruikerService gebruikerService;
 
-    public void registreer( String voornaam, String achternaam, String email, String wachtwoord, String rijksregisternummer, String geboortedatum){
+    public void registreer(String voornaam, String achternaam, String email, String wachtwoord, String rijksregisternummer, String geboortedatum) {
         newGebruiker.setActief(false);
         newGebruiker.setVoornaam(voornaam);
         newGebruiker.setAchternaam(achternaam);
@@ -30,5 +30,15 @@ public class GebruikerController implements Serializable  {
         gebruikerService.insert(newGebruiker);
     }
 
+    public void login(String email, String wachtwoord) {
+        Gebruiker Gebruiker = gebruikerService.findGebruikerByEmail(email);
 
+        String wachtwoordDB = Gebruiker.getWachtwoord();
+
+        if (wachtwoord == wachtwoordDB) {
+            System.out.println(email + wachtwoord + wachtwoordDB);
+        } else {
+            System.out.println(email + wachtwoord + wachtwoordDB);
+        }
+    }
 }

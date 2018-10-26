@@ -6,8 +6,23 @@ import javax.validation.constraints.Size;
 @DiscriminatorColumn (name = "PERSOONTYPE", discriminatorType = DiscriminatorType.STRING)
 @Entity
 @Table(name = "persoon")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Persoon.FIND_ALL,
+                        query = "SELECT p from Persoon p "
+                ),
+                @NamedQuery(
+                        name = Persoon.FIND_PERSOON_BY_EMAIL,
+                        query = "SELECT p.email, p.wachtwoord, p.actief from Persoon p where p.email = :email"
+                )
+        }
+)
 
 public class Persoon {
+    public static final String FIND_ALL = "Persoon.findAll";
+    public static final String FIND_PERSOON_BY_EMAIL = "Persoon.findPersoonByEmail";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

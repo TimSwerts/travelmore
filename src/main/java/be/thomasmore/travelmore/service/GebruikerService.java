@@ -14,6 +14,9 @@ public class GebruikerService {
     public Gebruiker findGebruikerById(int id){
         return gebruikerRepository.findById(id);
     }
+    public Gebruiker findGebruikerByEmail(String email){
+        return gebruikerRepository.findByEmail(email);
+    }
 
     public void insert(Gebruiker gebruiker){
         gebruikerRepository.insert(gebruiker);

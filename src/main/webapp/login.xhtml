@@ -12,6 +12,14 @@
 <h:body>
 
     <h:form>
+        <h:outputLabel value="Email"/>
+        <h:inputText value="#{email}" />
+
+        <h:outputLabel value="Wachtwoord"/>
+        <h:inputText  value="#{wachtwoord}" />
+
+        <h:commandButton value="Login" action="#{persoonController.login(email, wachtwoord)}" />
+
         <h:commandLink value="Registreer" action="registreer"/>
     </h:form>
 </h:body>
