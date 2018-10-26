@@ -54,3 +54,7 @@ body {
 .navbar li {
     float: left;
 }
+
+.error{
+    color: red !important;
+}
