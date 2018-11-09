@@ -2,7 +2,7 @@ package be.thomasmore.travelmore.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn (name = "PERSOONTYPE", discriminatorType = DiscriminatorType.STRING)
 @Entity
 @Table(name = "persoon")
@@ -11,10 +11,6 @@ import javax.validation.constraints.Size;
                 @NamedQuery(
                         name = Persoon.FIND_ALL,
                         query = "SELECT p from Persoon p "
-                ),
-                @NamedQuery(
-                        name = Persoon.FIND_PERSOON_BY_EMAIL,
-                        query = "SELECT p.email, p.wachtwoord, p.actief from Persoon p where p.email = :email"
                 )
         }
 )
@@ -25,7 +21,7 @@ public class Persoon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int persoonID;
 
     @Column(name = "voornaam")
     private String voornaam;
@@ -44,11 +40,11 @@ public class Persoon {
     }
 
     public int getId() {
-        return id;
+        return persoonID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int persoonID) {
+        this.persoonID = persoonID;
     }
 
     public String getVoornaam() {

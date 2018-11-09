@@ -24,14 +24,27 @@ public class PersoonController implements Serializable {
         TODO CONTROLEREN OF USER ACTIEF IS
          */
 
-        Persoon Persoon = persoonService.findPersoonByEmail(email);
 
-        String wachtwoordDB = Persoon.getWachtwoord();
-        System.out.println(email + wachtwoord + wachtwoordDB);
-        if (wachtwoord == wachtwoordDB) {
-            System.out.println(email + wachtwoord + wachtwoordDB);
-        } else {
-            System.out.println(email + wachtwoord + wachtwoordDB);
-        }
+        Persoon persoon = persoonService.findPersoonByEmail(email);
+
+        System.out.println(email + wachtwoord + persoon.getVoornaam());
+//        if (persoonService.findPersoonByEmail(email) != null){
+//
+//
+//
+//            String wachtwoordDB = persoonService.findPersoonByEmail(email).getWachtwoord();
+//            System.out.println(email + wachtwoord + wachtwoordDB);
+//            if (wachtwoord == wachtwoordDB) {
+//                System.out.println(email + wachtwoord + wachtwoordDB);
+//            } else {
+//                System.out.println(email + wachtwoord + wachtwoordDB);
+//            }
+//        }
+//        else{
+//            System.out.println("Persoon is niet gekend.");
+//        }
+
+
+
     }
 }

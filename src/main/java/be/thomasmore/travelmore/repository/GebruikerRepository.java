@@ -29,4 +29,5 @@ public class GebruikerRepository {
                 "SELECT u from Persoon u WHERE u.email = :email", Gebruiker.class).
                 setParameter("email", email).getSingleResult();
     }
+
 }

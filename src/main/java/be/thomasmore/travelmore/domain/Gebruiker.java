@@ -8,12 +8,15 @@ import java.util.List;
 
 @DiscriminatorValue("Gebruiker")
 @Entity
-@PrimaryKeyJoinColumn(name="id")
 @NamedQueries(
         {
                 @NamedQuery(
                         name = Gebruiker.FIND_ALL,
                         query = "SELECT p from Persoon p "
+                ),
+                @NamedQuery(
+                        name = Gebruiker.FIND_PERSOON_BY_EMAIL,
+                        query = "SELECT p from Persoon p where p.email = :email"
                 )
         }
 )
@@ -59,5 +62,13 @@ public class Gebruiker extends Persoon {
 
     public void setGeboortedatum(Date geboortedatum) {
         this.geboortedatum = geboortedatum;
+    }
+
+    public List<Boeking> getBoekingen() {
+        return boekingen;
+    }
+
+    public void setBoekingen(List<Boeking> boekingen) {
+        this.boekingen = boekingen;
     }
 }

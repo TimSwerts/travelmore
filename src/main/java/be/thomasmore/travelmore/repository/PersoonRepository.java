@@ -24,9 +24,5 @@ public class PersoonRepository {
         entityManager.persist(persoon);
     }
 
-    public Persoon findByEmail(String email) {
-        return entityManager.createQuery(
-                "SELECT DISTINCT p from Persoon p WHERE p.email = :email", Persoon.class).
-                setParameter("email", email).getSingleResult();
-    }
+
 }
