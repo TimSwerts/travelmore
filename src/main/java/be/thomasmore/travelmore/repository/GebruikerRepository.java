@@ -23,4 +23,13 @@ public class GebruikerRepository {
     public void insert(Gebruiker gebruiker){
         entityManager.persist(gebruiker);
     }
+
+    public boolean controleerEmailGebruikt(Gebruiker gebruiker){
+        Long count =  entityManager.createNamedQuery(Gebruiker.FIND_BY_EMAIL, Long.class).setParameter("email", gebruiker.getEmail()).getSingleResult();
+        boolean aanwezig = false;
+        if (count > 0){
+            aanwezig = true;
+        }
+        return aanwezig;
+    }
 }

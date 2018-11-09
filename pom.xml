@@ -25,6 +25,7 @@
             <version>4.2.2</version>
             <type>pom</type>
         </dependency>
+
     </dependencies>
     <build>
         <finalName>travelmore</finalName>
