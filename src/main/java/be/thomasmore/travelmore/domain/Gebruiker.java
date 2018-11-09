@@ -1,16 +1,13 @@
 package be.thomasmore.travelmore.domain;
 
 
-import javax.jms.Session;
-import javax.persistence.*;
-import javax.xml.stream.Location;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
-
 import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.persistence.*;
+import java.util.*;
 
 @DiscriminatorValue("Gebruiker")
 @Entity
@@ -39,6 +36,9 @@ public class Gebruiker extends Persoon {
 
     @Column(name = "geboortedatum")
     private Date geboortedatum;
+
+    @Column(name = "confirmationToken")
+    private String confirmationToken;
 
     @OneToMany(mappedBy = "id")
     private List<Boeking> boekingen = new ArrayList<>();
@@ -71,24 +71,83 @@ public class Gebruiker extends Persoon {
         this.geboortedatum = geboortedatum;
     }
 
+    public String getConfirmationToken() {
+        return confirmationToken;
+    }
+
+    public void setConfirmationToken(String confirmationToken) {
+        this.confirmationToken = confirmationToken;
+    }
+
     public void stuurBevestigingsMail(){
         //setup
+        this.setConfirmationToken(generateToken());
         final String host = "smtp.gmail.com";
-        final String from = "phpteam26@gmail.com";
-        final String pass = "phpprojectteam26";
-        String to  = this.getEmail();
+        final String from = "javaproject024@gmail.com\n";
+        final String password = "TMK2018!";
+        final String port = "587 ";
+        String to = this.getEmail();
 
-        //get session obj
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.auth", "true");
+        Properties prop = new Properties();
+        prop.put("mail.smtp.auth", true);
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", host);
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.ssl.trust", host);
+
+        Session session = Session.getInstance(prop, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from , password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(
+                    Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject("Bevestig uw registratie");
 
 
+            String msg = "Gebruik volgende code bij uw eerste aanmelding:" + this.getConfirmationToken() ;
 
+            MimeBodyPart mimeBodyPart = new MimeBodyPart();
+            mimeBodyPart.setContent(msg, "text/html");
+
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(mimeBodyPart);
+
+            message.setContent(multipart);
+
+            Transport.send(message);
+
+            System.out.println("joepie");
+        } catch (Exception e){
+            System.out.println(e);
+        }
 
 
 
 
 
     }
+
+    private String generateToken(){
+        String token = "";
+
+        Random random = new Random();
+
+        for (int i = 0; i<4; i++){
+            token += random.nextInt();
+        }
+
+
+        return token + "" ;
+    }
+
+
+
+
 }
+

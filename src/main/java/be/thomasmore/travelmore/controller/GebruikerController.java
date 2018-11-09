@@ -30,8 +30,9 @@ public class GebruikerController implements Serializable  {
         newGebruiker.setActief(false);
 
         if (newGebruiker.getWachtwoord().equals(controleWachtwoord) && !gebruikerService.controleerEmailGebruikt(newGebruiker)){
-            gebruikerService.insert(newGebruiker);
             newGebruiker.stuurBevestigingsMail();
+            gebruikerService.insert(newGebruiker);
+
         }
 
     }
