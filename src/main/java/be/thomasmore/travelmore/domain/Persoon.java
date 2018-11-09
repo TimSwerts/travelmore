@@ -78,4 +78,8 @@ public class Persoon {
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
     }
+
+
+
+
 }

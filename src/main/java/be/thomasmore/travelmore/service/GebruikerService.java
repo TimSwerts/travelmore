@@ -15,10 +15,14 @@ public class GebruikerService {
         return gebruikerRepository.findById(id);
     }
     public Gebruiker findGebruikerByEmail(String email){
-        return gebruikerRepository.findByEmail(email);
+        return gebruikerRepository.findPersoonByEmail(email);
     }
 
     public void insert(Gebruiker gebruiker){
         gebruikerRepository.insert(gebruiker);
+    }
+    public boolean controleerEmailGebruikt(Gebruiker gebruiker){
+        return gebruikerRepository.controleerEmailGebruikt(gebruiker);
+
     }
 }

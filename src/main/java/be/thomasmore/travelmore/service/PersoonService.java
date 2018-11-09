@@ -14,10 +14,6 @@ public class PersoonService {
     public Persoon findPersoonById(int id){
         return persoonRepository.findById(id);
     }
-    
-    public Persoon findPersoonByEmail(String email){
-        return persoonRepository.findByEmail(email);
-    }
 
     public void insert(Persoon persoon){
         persoonRepository.insert(persoon);

@@ -15,19 +15,31 @@ import java.util.Date;
 public class GebruikerController implements Serializable {
     private Gebruiker newGebruiker = new Gebruiker();
 
+    public Gebruiker getNewGebruiker() {
+        return newGebruiker;
+    }
+
+    public void setNewGebruiker(Gebruiker newGebruiker) {
+        this.newGebruiker = newGebruiker;
+    }
 
     @Inject
     private GebruikerService gebruikerService;
 
-    public void registreer(String voornaam, String achternaam, String email, String wachtwoord, String rijksregisternummer, String geboortedatum) {
+    public String registreer(String controleWachtwoord){
         newGebruiker.setActief(false);
-        newGebruiker.setVoornaam(voornaam);
-        newGebruiker.setAchternaam(achternaam);
-        newGebruiker.setEmail(email);
-        newGebruiker.setWachtwoord(wachtwoord);
-        newGebruiker.setRijksregisternummer(rijksregisternummer);
-        newGebruiker.setGeboortedatum(new Date());
-        gebruikerService.insert(newGebruiker);
+
+        if (newGebruiker.getWachtwoord().equals(controleWachtwoord) && !gebruikerService.controleerEmailGebruikt(newGebruiker)){
+            newGebruiker.stuurBevestigingsMail();
+            gebruikerService.insert(newGebruiker);
+
+
+            return "login";
+        }
+
+        return "registreer";
+
+
     }
 
     public void login(String email, String wachtwoord) {

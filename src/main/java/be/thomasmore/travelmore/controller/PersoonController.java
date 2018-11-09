@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
-import be.thomasmore.travelmore.domain.Persoon;
+import be.thomasmore.travelmore.domain.Gebruiker;
+import be.thomasmore.travelmore.service.GebruikerService;
 import be.thomasmore.travelmore.service.PersoonService;
 
 import javax.faces.bean.ManagedBean;
@@ -16,7 +17,7 @@ public class PersoonController implements Serializable {
 
 
     @Inject
-    private PersoonService persoonService;
+    private GebruikerService gebruikerService;
 
     public void login(String email, String wachtwoord) {
 
@@ -25,9 +26,9 @@ public class PersoonController implements Serializable {
          */
 
 
-        Persoon persoon = persoonService.findPersoonByEmail(email);
+        Gebruiker gebruiker = gebruikerService.findGebruikerByEmail(email);
 
-        System.out.println(email + wachtwoord + persoon.getVoornaam());
+        System.out.println(email + wachtwoord + gebruiker.getVoornaam());
 //        if (persoonService.findPersoonByEmail(email) != null){
 //
 //
@@ -43,7 +44,6 @@ public class PersoonController implements Serializable {
 //        else{
 //            System.out.println("Persoon is niet gekend.");
 //        }
-
 
 
     }
