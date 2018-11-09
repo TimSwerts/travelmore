@@ -1,11 +1,28 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "transportmiddel")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Transportmiddel.FIND_ALL,
+                        query = "SELECT t FROM Transportmiddel t"
+                ),
+                @NamedQuery(
+                        name = Transportmiddel.FIND_BY_ID,
+                        query = "SELECT t FROM Transportmiddel t WHERE t.id = :id"
+                )
+        }
+)
 
+@XmlRootElement(name = "transportmiddel")
 public class Transportmiddel {
+    public static final String FIND_ALL = "Transportmiddel.findAll";
+    public static final String FIND_BY_ID = "Transportmiddel.findById";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
