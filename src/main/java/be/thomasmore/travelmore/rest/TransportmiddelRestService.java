@@ -16,6 +16,7 @@ public class TransportmiddelRestService {
     @Inject
     private TransportmiddelService transportmiddelService;
 
+    //    localhost:xxxx/travelmore/rest/transportmiddelen/getTransportmiddelen
     @GET
     @Path("/getTransportmiddelen")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -23,6 +24,7 @@ public class TransportmiddelRestService {
         return transportmiddelService.findAll();
     }
 
+    //    localhost:xxxx/travelmore/rest/transportmiddelen/addTransportmiddel?naam=xxxx
     @POST
     @Path("/addTransportmiddel")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
