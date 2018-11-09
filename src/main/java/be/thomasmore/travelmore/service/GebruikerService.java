@@ -18,4 +18,8 @@ public class GebruikerService {
     public void insert(Gebruiker gebruiker){
         gebruikerRepository.insert(gebruiker);
     }
+    public boolean controleerEmailGebruikt(Gebruiker gebruiker){
+        return gebruikerRepository.controleerEmailGebruikt(gebruiker);
+
+    }
 }
