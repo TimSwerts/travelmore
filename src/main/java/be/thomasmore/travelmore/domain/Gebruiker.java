@@ -134,13 +134,11 @@ public class Gebruiker extends Persoon {
     }
 
     private String generateToken(){
-        String token = "";
+        int token;
 
         Random random = new Random();
 
-        for (int i = 0; i<4; i++){
-            token += random.nextInt();
-        }
+        token = random.nextInt(400 - 100) + 100;
 
 
         return token + "" ;

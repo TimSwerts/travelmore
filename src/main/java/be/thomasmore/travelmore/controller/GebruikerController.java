@@ -26,14 +26,19 @@ public class GebruikerController implements Serializable  {
     @Inject
     private GebruikerService gebruikerService;
 
-    public void registreer(String controleWachtwoord){
+    public String registreer(String controleWachtwoord){
         newGebruiker.setActief(false);
 
         if (newGebruiker.getWachtwoord().equals(controleWachtwoord) && !gebruikerService.controleerEmailGebruikt(newGebruiker)){
             newGebruiker.stuurBevestigingsMail();
             gebruikerService.insert(newGebruiker);
 
+
+            return "login";
         }
+
+        return "registreer";
+
 
     }
 

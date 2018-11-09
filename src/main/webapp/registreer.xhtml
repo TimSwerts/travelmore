@@ -31,17 +31,34 @@
                                 requiredMessage="Verplicht!"
                                 label="voornaam"
                                 id="voornaam"
+                                styleClass="u-full-width"
                         />
                         <h:message for="voornaam" styleClass="error"/>
+                    </div>
+                    <div class="six columns">
+                        <h:outputLabel value="Achternaam"/>
+                        <h:inputText
+                                value="#{gebruikerController.newGebruiker.achternaam}"
+                                required="true"
+                                requiredMessage="Verplicht!"
+                                id="achternaam"
+                                styleClass="u-full-width"
+                        />
+                        <h:message for="achternaam" styleClass="error"/>
+                    </div>
 
+                    <div class="twelve columns">
                         <h:outputLabel value="Email"/>
                         <h:inputText
                                 value="#{gebruikerController.newGebruiker.email}"
                                 required="true"
                                 requiredMessage="Verplicht!"
                                 id="email"
+                                styleClass="u-full-width"
                         />
                         <h:message for="email" styleClass="error"/>
+                    </div>
+                    <div class="twelve columns">
 
                         <h:outputLabel value="Geboortedatum"/>
                         <p:calendar
@@ -54,15 +71,8 @@
 
 
                     </div>
-                    <div class="six columns">
-                        <h:outputLabel value="Achternaam"/>
-                        <h:inputText
-                                value="#{gebruikerController.newGebruiker.achternaam}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                id="achternaam"
-                        />
-                        <h:message for="achternaam" styleClass="error"/>
+                    <div class="twelve columns">
+
 
                         <h:outputLabel value="Rijksregisternummer"/>
                         <h:inputText
@@ -70,24 +80,31 @@
                                 required="true"
                                 requiredMessage="Verplicht!"
                                 id="rijksregisternummer"
+                                styleClass="u-full-width"
+
                         />
                         <h:message for="rijksregisternummer" styleClass="error"/>
 
+                    </div>
+                    <div class="twelve columns">
                         <h:outputLabel value="Wachtwoord"/>
                         <h:inputSecret
                                 value="#{gebruikerController.newGebruiker.wachtwoord}"
-                                        required="true"
-                                        requiredMessage="Verplicht!"
-                                        id="wachtwoord"
+                                required="true"
+                                requiredMessage="Verplicht!"
+                                id="wachtwoord"
+                                styleClass="u-full-width"
                         />
                         <h:message for="wachtwoord" styleClass="error"/>
-
+                    </div>
+                    <div class="twelve columns">
                         <h:outputLabel value="Bevestig wachtwoord"/>
                         <h:inputSecret
                                 value="#{controleWachtwoord}"
                                 required="true"
                                 requiredMessage="Verplicht!"
                                 id="bevestigWachtwoord"
+                                styleClass="u-full-width"
                         />
                         <h:message for="bevestigWachtwoord" styleClass="error"/>
                     </div>
