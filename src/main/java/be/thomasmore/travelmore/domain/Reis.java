@@ -6,8 +6,19 @@ import java.util.List;
 
 @Entity
 @Table(name = "reis")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Reis.FIND_ALL,
+                        query = "SELECT r from Reis r where r.bestemming.id = (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.id = (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
 
+                )// and r.vertreklocatie_id =(select s.land_id from stad s where s.land_id = 2)
+
+        }
+)
 public class Reis {
+    public static final String FIND_ALL = "Reis.findAll";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
