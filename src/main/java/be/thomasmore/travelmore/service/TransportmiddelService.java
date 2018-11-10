@@ -24,4 +24,11 @@ public class TransportmiddelService {
         transportmiddelRepository.insert(transportmiddel);
     }
 
+    public void delete(Transportmiddel transportmiddel){
+        transportmiddelRepository.delete(transportmiddel);
+    }
+
+    public boolean controleerIdGebruikt(int id){
+        return transportmiddelRepository.controleerIdGebruikt(id);
+    }
 }

@@ -14,6 +14,10 @@ import javax.xml.bind.annotation.XmlRootElement;
                 @NamedQuery(
                         name = Transportmiddel.FIND_BY_ID,
                         query = "SELECT t FROM Transportmiddel t WHERE t.id = :id"
+                ),
+                @NamedQuery(
+                        name= Transportmiddel.COUNT_BY_ID,
+                        query = "select count(t) from Transportmiddel t where t.id = :id"
                 )
         }
 )
@@ -22,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Transportmiddel {
     public static final String FIND_ALL = "Transportmiddel.findAll";
     public static final String FIND_BY_ID = "Transportmiddel.findById";
+    public static final String COUNT_BY_ID = "Transportmiddel.countById";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

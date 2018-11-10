@@ -32,4 +32,10 @@ public class GebruikerRepository {
         }
         return aanwezig;
     }
+
+
+    public boolean controleerTokenGebruikt(String token){
+        Long count =  entityManager.createNamedQuery(Gebruiker.FIND_BY_TOKEN, Long.class).setParameter("token", token).getSingleResult();
+        return (count > 0);
+    }
 }
