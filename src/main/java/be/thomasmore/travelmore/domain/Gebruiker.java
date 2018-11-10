@@ -20,6 +20,10 @@ import java.util.*;
                 @NamedQuery(
                         name= Gebruiker.FIND_BY_EMAIL,
                         query = "select count(p) from Persoon p where p.email = :email"
+                ),
+                @NamedQuery(
+                        name= Gebruiker.FIND_BY_TOKEN,
+                        query = "select count(p) from Persoon p where p.confirmationToken = :token"
                 )
         }
 )
@@ -27,6 +31,8 @@ import java.util.*;
 public class Gebruiker extends Persoon {
     public static final String FIND_ALL = "Gebruiker.findAll";
     public static final String FIND_BY_EMAIL = "Gebruiker.findByEmail";
+    public static final String FIND_BY_TOKEN = "Gebruiker.findByToken";
+    public static final String FIND_BY_ID = "Gebruiker.findById";
 
     @Column(name = "rijksregisternummer")
     private String rijksregisternummer;
