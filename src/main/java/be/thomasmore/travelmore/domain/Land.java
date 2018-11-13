@@ -10,7 +10,7 @@ import java.util.List;
         {
                 @NamedQuery(
                         name = Land.FIND_ALL,
-                        query = "SELECT l from Land l order by naam"
+                        query = "SELECT l from Land l order by l.naam"
                 )
         }
 )
