@@ -4,6 +4,7 @@ import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.ReisService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.awt.event.ActionEvent;
@@ -11,7 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ReisController implements Serializable {
     private Reis reis = new Reis();
     private List<Reis> reizen;

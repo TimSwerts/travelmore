@@ -9,12 +9,11 @@
     <title>Travel More!</title>
     <link rel="stylesheet" href="resources/css/skeleton.css"/>
 </h:head>
-<f:view>
+<h:body>
     <h:dataTable value="#{reisController.reizen}" var="reis">
         <h:column>#{reis.vertreklocatie.naam}</h:column>
         <h:column>#{reis.bestemming.naam}</h:column>
         <h:column>#{reis.beschrijving}</h:column>
     </h:dataTable>
-    <h:outputText value="dl;kkjfasd;lfajdf"></h:outputText>
-</f:view>
+</h:body>
 </html>
