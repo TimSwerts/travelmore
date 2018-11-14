@@ -17,13 +17,12 @@
         </ul>
     </div>
     <div class="container">
-        <h:form id="search">
+        <h:form>
             <div class="row search-row">
                 <div class="six columns">
                     <h:outputLabel for="startLocation" value="From: "/>
 
-
-                    <h:selectOneMenu class="u-full-width" id="startLocation" placeholder="Start location">
+                    <h:selectOneMenu value="#{reisController.vertrekLandID}" class="u-full-width" id="startLocation" placeholder="Start location">
                         <f:selectItem itemLabel="Select departure country" noSelectionOption="true" />
                         <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}" itemLabel="#{land.naam}" />
                     </h:selectOneMenu>
@@ -31,13 +30,13 @@
                 <div class="six columns">
                     <h:outputLabel for="endLocation" value="To:"/>
 
-                    <h:selectOneMenu class="u-full-width" id="endLocation">
+                    <h:selectOneMenu value="#{reisController.bestemmingsLandID}" class="u-full-width" id="endLocation">
                         <f:selectItem itemLabel="Select country of arrival" noSelectionOption="true" />
                         <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}" itemLabel="#{land.naam}" />
                     </h:selectOneMenu>
-                </div>
 
-                <h:commandButton value="Search" class="btn btn-search" action="#{locationController.submit}" update=":locationDataTable"/>
+                </div>
+                <h:commandButton value="Search" class="btn btn-search"  action="#{reisController.overzichtReizen}"/>
             </div>
         </h:form>
     </div>

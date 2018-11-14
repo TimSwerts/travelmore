@@ -23,4 +23,15 @@ public class TransportmiddelRepository {
         entityManager.flush();
     }
 
+    public void delete(Transportmiddel transportmiddelParam){
+        Transportmiddel transportmiddel = entityManager.find(Transportmiddel.class, transportmiddelParam.getId());
+        entityManager.remove(transportmiddel);
+        entityManager.flush();
+    }
+
+    public boolean controleerIdGebruikt(int id){
+        long count =  entityManager.createNamedQuery(Transportmiddel.COUNT_BY_ID, Long.class).setParameter("id", id).getSingleResult();
+        return (count > 0);
+    }
+
 }

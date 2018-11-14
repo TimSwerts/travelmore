@@ -5,6 +5,7 @@ import be.thomasmore.travelmore.repository.GebruikerRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.List;
 
 @Stateless
 public class GebruikerService {
@@ -23,4 +24,13 @@ public class GebruikerService {
         return gebruikerRepository.controleerEmailGebruikt(gebruiker);
 
     }
+
+
+
+
+    public boolean controleerTokenGebruikt(String token){
+        return  gebruikerRepository.controleerTokenGebruikt(token);
+    }
+
+
 }
