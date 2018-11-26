@@ -13,7 +13,8 @@
 <h:body class="bg-image">
     <div class="row navbar-row">
         <ul class="navbar">
-            <li><h:button value="Login" outcome="login.xhtml" class="btn btn-login"/></li>
+            <li><h:button value="Login" outcome="login.xhtml" styleClass="btn-main btn-login"/></li>
+            <li><h:button value="Admin" styleClass="btn-main" outcome="#{reisController.testAdmin()}"/></li>
         </ul>
     </div>
     <div class="container">
@@ -36,7 +37,7 @@
                     </h:selectOneMenu>
 
                 </div>
-                <h:commandButton value="Search" class="btn btn-search"  action="#{reisController.overzichtReizen}"/>
+                <h:commandButton value="Search" class="btn-main btn-search"  action="#{reisController.overzichtReizen}"/>
             </div>
         </h:form>
     </div>

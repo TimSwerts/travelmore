@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +13,17 @@ import java.util.List;
                 @NamedQuery(
                         name = Stad.FIND_ALL,
                         query = "SELECT s from Stad s "
+                ),
+                @NamedQuery(
+                        name = Stad.FIND_BY_ID,
+                        query = "SELECT s FROM Stad s WHERE s.id = :id"
                 )
         }
 )
 
 public class Stad {
     public static final String FIND_ALL = "Stad.findAll";
+    public static final String FIND_BY_ID = "Stad.findById";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
