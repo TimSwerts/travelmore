@@ -19,13 +19,18 @@
         <div class="container">
             <div class="row search-row">    
                 <button class="btn-main" data-target="#addModal" data-toggle="modal">ADD</button>
-                <h:dataTable value="#{reisController.reizen}" var="reis" headerClass="search-row">
-                    <h:column>#{reis.vertreklocatie.naam}</h:column>
-                    <h:column>#{reis.bestemming.naam}</h:column>
-                    <h:column>#{reis.beschrijving}</h:column>
-                    <!--Nog doen + fontawesome?-->
-                    <h:column><h:button value="DELETE" styleClass="btn-main"/></h:column>
-                </h:dataTable>
+                <h:form>
+                    <h:dataTable value="#{reisController.reizen}" var="reis" headerClass="search-row">
+                        <h:column>#{reis.vertreklocatie.naam}</h:column>
+                        <h:column>#{reis.bestemming.naam}</h:column>
+                        <h:column>#{reis.beschrijving}</h:column>
+                        <!-- fontawesome? -->
+                        <h:column>
+                            <h:commandButton value="DELETE" styleClass="btn-main"
+                                             action="#{reisController.deleteReis(reis.id)}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
             </div>
         </div>
     </f:view>
@@ -65,9 +70,9 @@
                     styleClass="u-full-width"
             />
             <h:message for="description" styleClass="error"/>
+
             <h:commandButton value="Ok" action="#{reisController.addReis}"/>
             <h:button value="Cancel" dismiss="modal"/>
-
         </h:form>
     </b:modal>
 </h:body>

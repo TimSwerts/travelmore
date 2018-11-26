@@ -61,6 +61,12 @@ public class ReisController implements Serializable {
         reizen = this.reisService.findAll();
     }
 
+    public void deleteReis(int reisId){
+        Reis reis = reisService.findReisById(reisId);
+        reisService.delete(reis);
+        reizen = this.reisService.findAll();
+    }
+
     public List<Reis> getReizen() {
         return reizen;
     }

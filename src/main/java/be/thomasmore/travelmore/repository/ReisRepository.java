@@ -21,4 +21,14 @@ public class ReisRepository {
         entityManager.persist(reis);
         entityManager.flush();
     }
+
+    public Reis findReisById(int id){
+        return entityManager.createNamedQuery(Reis.FIND_BY_ID, Reis.class).setParameter("id",id).getSingleResult();
+    }
+
+    public void delete(Reis reisParam){
+        Reis reis = entityManager.find(Reis.class, reisParam.getId());
+        entityManager.remove(reis);
+        entityManager.flush();
+    }
 }

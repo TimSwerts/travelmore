@@ -17,12 +17,17 @@ import java.util.List;
                 @NamedQuery(
                         name = Reis.FIND_ALL,
                         query = "select r from Reis r"
+                ),
+                @NamedQuery(
+                        name = Reis.FIND_BY_ID,
+                        query = "select r from Reis r where r.id = :id"
                 )
         }
 )
 public class Reis {
     public static final String FIND_ALL_BY_VERTREK_BESTEMMING = "Reis.findAll_by_vertrek_bestemming";
     public static final String FIND_ALL = "Reis.findAll";
+    public static final String FIND_BY_ID = "Reis.findById";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

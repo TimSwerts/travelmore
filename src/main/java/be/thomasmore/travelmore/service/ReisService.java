@@ -22,4 +22,8 @@ public class ReisService {
     public void addReis(Reis reis) {
         reisRepository.addReis(reis);
     }
+
+    public Reis findReisById(int id){ return reisRepository.findReisById(id);}
+
+    public void delete(Reis reis){ reisRepository.delete(reis);}
 }
