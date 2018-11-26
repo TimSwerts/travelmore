@@ -47,7 +47,7 @@ public class TransportmiddelRestService {
                 .entity("Er trad een fout op tijdens het maken van een nieuw transportmiddel.").build();
     }
 
-    //    localhost:xxxx/travelmore/rest/transportmiddelen/deleteTransportmiddel?id=x&token=xxxx
+    //    localhost:xxxx/travelmore/rest/transportmiddelen/deleteTransportmiddel?id=x&token=6532
     @DELETE
     @Path("/deleteTransportmiddel")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

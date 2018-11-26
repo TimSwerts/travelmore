@@ -13,6 +13,7 @@ import java.util.List;
 public class TransportmiddelController {
 
     private Transportmiddel transportmiddel = new Transportmiddel();
+    private List<Transportmiddel> transportmiddelen;
 
     @Inject
     private TransportmiddelService transportmiddelService;
@@ -21,11 +22,19 @@ public class TransportmiddelController {
         return transportmiddel;
     }
 
+    public Transportmiddel getTransportmiddel(int id){
+       return transportmiddelService.findTransportmiddelById(id);
+    }
+
     public void setTransportmiddel(Transportmiddel transportmiddel) {
         this.transportmiddel = transportmiddel;
     }
 
     public List<Transportmiddel> getTransportmiddelen(){
         return this.transportmiddelService.findAll();
+    }
+
+    public void setTransportmiddelen(List<Transportmiddel> transportmiddelen) {
+        this.transportmiddelen = transportmiddelen;
     }
 }
