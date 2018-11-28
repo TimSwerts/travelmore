@@ -8,12 +8,35 @@
 <h:head>
     <title>Travel More!</title>
     <link rel="stylesheet" href="resources/css/skeleton.css"/>
+    <link rel="stylesheet" href="./resources/css/style.css"/>
 </h:head>
-<h:body>
-    <h:dataTable value="#{reisController.reizen}" var="reis">
-        <h:column>#{reis.vertreklocatie.naam}</h:column>
-        <h:column>#{reis.bestemming.naam}</h:column>
-        <h:column>#{reis.beschrijving}</h:column>
-    </h:dataTable>
+<h:body class="bg-image">
+    <div class="row navbar-row">
+        <ul class="navbar">
+            <li><h:button value="Login" outcome="login.xhtml" styleClass="btn-main btn-login"/></li>
+        </ul>
+    </div>
+    <f:view>
+        <div class="container">
+            <div class="row search-row">    
+                <h:form>
+                    <h:outputLabel for="transportType" value="Transport type:"/>
+                    <h:selectOneMenu value="#{reisController.transportmiddelID}" id="transportType">
+                        <f:selectItem itemLabel="Select transport type:" noSelectionOption="true"/>
+                        <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel"
+                                       itemValue="#{transportmiddel.id}"
+                                       itemLabel="#{transportmiddel.naam}"/>
+                    </h:selectOneMenu>
+
+                    <h:dataTable value="#{reisController.reizen}" var="reis">
+                        <h:column>#{reis.vertreklocatie.naam}</h:column>
+                        <h:column>#{reis.bestemming.naam}</h:column>
+                        <h:column>#{reis.beschrijving}</h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </f:view>
+
 </h:body>
 </html>

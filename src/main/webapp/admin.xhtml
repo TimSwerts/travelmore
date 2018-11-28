@@ -52,7 +52,7 @@
                                itemLabel="#{stad.naam}"/>
             </h:selectOneMenu>
 
-            <h:outputLabel for="transportType" value="Tranport type:"/>
+            <h:outputLabel for="transportType" value="Transport type:"/>
             <h:selectOneMenu value="#{reisController.transportmiddelID}" class="u-full-width" id="transportType">
                 <f:selectItem itemLabel="Select transport type" noSelectionOption="true"/>
                 <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel"
