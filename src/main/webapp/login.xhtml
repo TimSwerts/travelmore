@@ -8,11 +8,53 @@
 <h:head>
     <title>Travel More!</title>
     <link rel="stylesheet" href="resources/css/skeleton.css"/>
+    <link rel="stylesheet" href="resources/css/style.css"/>
 </h:head>
 <h:body>
 
-    <h:form>
-        <h:commandLink value="Registreer" action="registreer"/>
-    </h:form>
+
+    <div class="container">
+
+        <div class="row search-row">
+            <h:form>
+                <div class="twelve columns">
+                    <h:outputLabel value="Email:"/>
+                    <h:inputText
+                            value="#{persoonController.loginPersoon.email}"
+                            required="true"
+                            requiredMessage="Verplicht!"
+                            label="email"
+                            id="email"
+                            styleClass="u-full-width"
+                    />
+                    <h:message for="email" styleClass="error"/>
+                </div>
+                <div class="twelve columns">
+                    <h:outputLabel value="Wachtwoord"/>
+                    <h:inputSecret
+                            value="#{persoonController.loginPersoon.wachtwoord}"
+                            required="true"
+                            requiredMessage="Verplicht!"
+                            id="wachtwoord"
+                            styleClass="u-full-width"
+                    />
+                    <h:message for="wachtwoord" styleClass="btn"/>
+                </div>
+                <h:commandButton value="Aanmelden" styleClass="btn" action="#{persoonController.login}" />
+
+
+            </h:form>
+
+            <h:form>
+                <h:commandLink value="Nog geen account?" action="registreer"/>
+            </h:form>
+        </div>
+
+
+
+    </div>
+
+
+
 </h:body>
 </html>

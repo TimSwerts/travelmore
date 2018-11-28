@@ -42,6 +42,13 @@ public class GebruikerController implements Serializable  {
 
     }
 
+    public String login (){
+
+
+
+        return "login";
+    }
+
 
 
 
