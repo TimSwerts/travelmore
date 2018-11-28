@@ -14,9 +14,16 @@
     <div class="row navbar-row">
         <ul class="navbar">
             <li><h:button value="Login" outcome="login.xhtml" class="btn btn-login"/></li>
+            <h:form>
+                <li><h:commandButton styleClass="btn" action="#{persoonController.logout}" value="Afmelden" /></li>
+                <li><h:commandButton action="#{persoonController.test()}" styleClass="btn" value="Test" /></li>
+            </h:form>
+
         </ul>
     </div>
     <div class="container">
+
+        <h:outputLabel value="#{persoonController.loginPersoon.email}"/>
         <h:form>
             <div class="row search-row">
                 <div class="six columns">
