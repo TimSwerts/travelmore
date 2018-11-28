@@ -9,15 +9,25 @@ import java.util.List;
 @NamedQueries(
         {
                 @NamedQuery(
+                        name = Reis.FIND_ALL_BY_VERTREK_BESTEMMING,
+//                        query = "SELECT r from Reis r where r.bestemming.id = (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.id = (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
+                        query = "SELECT r from Reis r where r.bestemming.land.id = (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.land.id = (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
+
+                ),// and r.vertreklocatie_id =(select s.land_id from stad s where s.land_id = 2)
+                @NamedQuery(
                         name = Reis.FIND_ALL,
-                        query = "SELECT r from Reis r where r.bestemming.id = (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.id = (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
-
-                )// and r.vertreklocatie_id =(select s.land_id from stad s where s.land_id = 2)
-
+                        query = "select r from Reis r"
+                ),
+                @NamedQuery(
+                        name = Reis.FIND_BY_ID,
+                        query = "select r from Reis r where r.id = :id"
+                )
         }
 )
 public class Reis {
+    public static final String FIND_ALL_BY_VERTREK_BESTEMMING = "Reis.findAll_by_vertrek_bestemming";
     public static final String FIND_ALL = "Reis.findAll";
+    public static final String FIND_BY_ID = "Reis.findById";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

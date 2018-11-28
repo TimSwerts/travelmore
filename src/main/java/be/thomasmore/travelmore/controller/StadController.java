@@ -14,6 +14,7 @@ import java.util.List;
 public class StadController implements Serializable {
 
     private Stad stad = new Stad();
+    private List<Stad> steden;
 
     @Inject
     private StadService stadService;
@@ -24,5 +25,9 @@ public class StadController implements Serializable {
 
     public List<Stad> getSteden(){
         return this.stadService.findAll();
+    }
+
+    public void setSteden(List<Stad> steden) {
+        this.steden = steden;
     }
 }

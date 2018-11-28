@@ -3,6 +3,7 @@ package be.thomasmore.travelmore.controller;
 import be.thomasmore.travelmore.domain.Persoon;
 import be.thomasmore.travelmore.service.PersoonService;
 import be.thomasmore.travelmore.util.SessionUtils;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.http.HttpRequest;
 
 import javax.faces.bean.ManagedBean;
@@ -44,32 +45,43 @@ public class PersoonController implements Serializable {
         return "index";
     }
 
-    public Persoon ingelogdeGebruiker(){
-        HttpSession session = SessionUtils.getSession();
-        return (Persoon) session.getAttribute("Gebruiker");
-    }
 
+    public Persoon getIngelogdePersoon(){
+        HttpSession session = SessionUtils.getSession();
+        Persoon pers = (Persoon) session.getAttribute("Gebruiker");
+        if (pers == null) {
+            return new Persoon();
+        } else  {
+            return pers;
+        }
+    }
 
     private void maakLoginSessie(Persoon persoon){
         HttpSession session = SessionUtils.getSession();
         session.setMaxInactiveInterval(15*60);
         session.setAttribute("Gebruiker", persoon);
-        System.out.println("heej");
+
+        this.loginPersoon =persoon;
     }
 
     public String logout() {
+
+
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
-        return "login";
+
+        return "index";
     }
 
-    public boolean aangemeld(){
-        return ingelogdeGebruiker() != null;
+    public Boolean isAangemeld(){
+        HttpSession session = SessionUtils.getSession();
+        return session.getAttribute("Gebruiker") != null;
     }
 
-    public void test(){
-        System.out.println(aangemeld());
-    }
+
+
+
+
 
 
 }
