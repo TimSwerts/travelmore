@@ -71,9 +71,14 @@ public class GebruikerController implements Serializable {
             if (controleRR[1].equals(rest + "")) {
                 return true;
             }
-
         }
         return false;
+    }
+
+    public String login() {
+
+
+        return "login";
     }
 
     //  Validate email
