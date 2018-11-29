@@ -48,6 +48,7 @@ public class GebruikerController implements Serializable {
         return "registreer";
     }
 
+
     private Boolean checkRRN() {
         //  Format datum
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");

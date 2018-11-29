@@ -83,5 +83,4 @@ public class Persoon {
         this.wachtwoord = wachtwoord;
     }
 
-    
 }
