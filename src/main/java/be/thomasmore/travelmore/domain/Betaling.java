@@ -1,12 +1,27 @@
 package be.thomasmore.travelmore.domain;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "betaling")
+@NamedQueries(
+        @NamedQuery(
+                name = Betaling.FIND_ALL,
+                query = "select b from Betaling b"
+        )
+//        ,
+//        @NamedQuery(
+//                name = Reis.FIND_BY_ID,
+//                query = "select b from Betaling b where b.id = :id"
+//        )
+)
 
 public class Betaling {
+    public static final String FIND_ALL = "Betaling.findAll";
+//    public static final String FIND_BY_ID = "Reis.findById";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -56,5 +71,13 @@ public class Betaling {
 
     public void setBetalingType(BetalingType betalingType) {
         this.betalingType = betalingType;
+    }
+
+    public Boeking getBoeking() {
+        return boeking;
+    }
+
+    public void setBoeking(Boeking boeking) {
+        this.boeking = boeking;
     }
 }

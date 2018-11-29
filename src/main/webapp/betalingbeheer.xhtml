@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Travel More!</title>
+    <link rel="stylesheet" href="resources/css/skeleton.css"/>
+</h:head>
+<f:view>
+    <h:dataTable value="#{betalingController.betalingen}" var="betaling">
+        <h:column>#{betaling.id}</h:column>
+        <h:column>#{betaling.bedrag}</h:column>
+        <h:column>#{betaling.betalingType.naam}</h:column>
+        <h:column>#{betaling.datum}</h:column>
+    </h:dataTable>
+    <!--<h:outputText value="#{stadController.getStad(1).naam}"></h:outputText>-->
+    <!--<h:selectOneMenu>-->
+        <!--<f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}" itemLabel="#{stad.naam}"></f:selectItems>-->
+    <!--</h:selectOneMenu>-->
+
+</f:view>
+</html>
