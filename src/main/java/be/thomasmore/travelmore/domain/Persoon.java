@@ -39,6 +39,7 @@ public class Persoon {
     @Size(max = 255)
     private String wachtwoord;
 
+
     public Persoon() {
     }
 
