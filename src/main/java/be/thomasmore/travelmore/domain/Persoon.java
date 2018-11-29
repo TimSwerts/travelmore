@@ -39,9 +39,6 @@ public class Persoon {
     @Size(max = 255)
     private String wachtwoord;
 
-    @Column(name = "ConfirmationToken")
-    private String ConfirmationToken;
-
     public Persoon() {
     }
 
@@ -85,11 +82,4 @@ public class Persoon {
         this.wachtwoord = wachtwoord;
     }
 
-    public String getConfirmationToken() {
-        return ConfirmationToken;
-    }
-
-    public void setConfirmationToken(String confirmationToken) {
-        ConfirmationToken = confirmationToken;
-    }
 }

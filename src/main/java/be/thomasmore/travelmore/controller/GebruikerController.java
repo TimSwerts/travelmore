@@ -32,20 +32,14 @@ public class GebruikerController implements Serializable  {
         if (newGebruiker.getWachtwoord().equals(controleWachtwoord) && !gebruikerService.controleerEmailGebruikt(newGebruiker)){
             newGebruiker.stuurBevestigingsMail();
             gebruikerService.insert(newGebruiker);
-
-
             return "login";
         }
-
         return "registreer";
 
 
     }
 
     public String login (){
-
-
-
         return "login";
     }
 
