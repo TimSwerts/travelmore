@@ -14,10 +14,34 @@
         <h:column>#{betaling.betalingType.naam}</h:column>
         <h:column>#{betaling.datum}</h:column>
     </h:dataTable>
-    <!--<h:outputText value="#{stadController.getStad(1).naam}"></h:outputText>-->
-    <!--<h:selectOneMenu>-->
-        <!--<f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}" itemLabel="#{stad.naam}"></f:selectItems>-->
-    <!--</h:selectOneMenu>-->
+    <hr/>
+    <h:form>
+        <div class="row search-row">
+            <h:outputText value="#{betalingController.datum}"/>
+            <div class="six columns">
+                <h:outputLabel value="Prijs: "/>
+                <h:inputText
+                        value="#{betalingController.newBetaling.bedrag}"
+                        required="true"
+                        requiredMessage="Verplicht!"
+                        label="Prijs"
+                        id="Bedrag"
+                        styleClass="u-full-width"
+                />
+                <h:message for="Prijs" styleClass="error"/>
+            </div>
+            <div class="six columns">
+            <h:outputLabel for="Betaalmiddel" value="Betaalmiddel: "/>
+                <h:selectOneMenu value="#{betalingController.newBetaling}" class="u-full-width" id="Betaalmiddel"
+                                 placeholder="Betaalmiddel">
+                    <f:selectItem itemLabel="Betaalmiddel" noSelectionOption="true"/>
+                    <f:selectItems value="#{betalingTypeController.betalingTypes}" var="type" itemValue="#{type.id}"
+                                   itemLabel="#{type.naam}"/>
+                </h:selectOneMenu>
+            </div>
 
+        </div>
+    </h:form>
+    <h:outputText value="#{betalingController.newBetaling.datum}"/>
 </f:view>
 </html>

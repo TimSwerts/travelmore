@@ -20,7 +20,7 @@ public class BetalingService {
         return betalingRepository.findAll();
     }
 
-    public void insert(Betaling betaling){
-        betalingRepository.insert(betaling);
+    public void addBetaling(Betaling betaling){
+        betalingRepository.addBetaling(betaling);
     }
 }

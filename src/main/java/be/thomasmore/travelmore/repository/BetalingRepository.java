@@ -19,7 +19,8 @@ public class BetalingRepository {
         return entityManager.createNamedQuery(Betaling.FIND_ALL, Betaling.class).getResultList();
     }
 
-    public void insert(Betaling betaling){
+    public void addBetaling(Betaling betaling){
         entityManager.persist(betaling);
+        entityManager.flush();
     }
 }

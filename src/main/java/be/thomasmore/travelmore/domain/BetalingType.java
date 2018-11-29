@@ -6,8 +6,17 @@ import java.util.List;
 
 @Entity
 @Table(name = "betalingType")
+@NamedQueries(
+        @NamedQuery(
+                name = BetalingType.FIND_ALL,
+                query = "select b from BetalingType b"
+        )
+)
 
 public class BetalingType {
+
+    public static final String FIND_ALL = "BetalingType.findAll";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
