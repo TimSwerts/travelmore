@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:dataTable value="#{boekingController.boekingen}" var="boeking">
+        <h:column>#{boeking.id}</h:column>
+        <h:column>#{boeking.reis.prijs * (boeking.aantalKinderen + boeking.aantalVolwassenen)}</h:column>
+        <h:column>#{boeking.betaling.id}</h:column>
+        <h:column>#{boeking.datum}</h:column>
+        <h:column>#{boeking.aantalKinderen}</h:column>
+    </h:dataTable>
+    <hr/>
+    <h:form>
+        <div class="row search-row">
+            <div class="six columns">
+                <h:outputLabel value="Aantal kinderen: "/>
+                <h:inputText
+                        value="#{boekingController.newBoeking.aantalKinderen}"
+                        required="true"
+                        requiredMessage="Verplicht!"
+                        label="Kinderen"
+                        id="Kinderen"
+                        styleClass="u-full-width"
+                />
+                <h:message for="Kinderen" styleClass="error"/>
+            </div>
+            <div class="six columns">
+                <h:outputLabel value="Aantal volwassenen: "/>
+                <h:inputText
+
+                        value="#{boekingController.newBoeking.aantalVolwassenen}"
+                        required="true"
+                        requiredMessage="Verplicht!"
+                        label="Volwassenen"
+                        id="Volwassenen"
+                        styleClass="u-full-width"
+                ><f:convertNumber/></h:inputText>
+                <h:message for="Volwassenen" styleClass="error"/>
+
+            </div>
+
+        </div>
+    </h:form>
+</f:view>
+</html>
