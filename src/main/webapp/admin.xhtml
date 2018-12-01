@@ -60,66 +60,67 @@
         </div>
     </f:view>
 
-    <b:modal id="addModal" title="Add a trip" styleClass="modalPseudoClass">
-        <h:form>
-            <h:outputLabel for="startLocation" value="From: "/>
-            <h:selectOneMenu value="#{reisController.vertrekStadID}" class="u-full-width" id="startLocation"
-                             placeholder="Start location">
+    <b:modal id="addModal" title="Add a trip" styleClass="formValidationModalClass" closable="false">
+        <b:form>
+            <b:selectOneMenu value="#{reisController.vertrekStadID}" class="u-full-width" id="startLocation"
+                             label="From: "
+                             required="true" requiredMessage="Please select a departure city.">
                 <f:selectItem itemLabel="Select departure city" noSelectionOption="true"/>
                 <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
                                itemLabel="#{stad.naam}"/>
-            </h:selectOneMenu>
+            </b:selectOneMenu>
 
-            <h:outputLabel for="endLocation" value="To:"/>
-            <h:selectOneMenu value="#{reisController.bestemmingsStadID}" class="u-full-width" id="endLocation">
+            <b:selectOneMenu value="#{reisController.bestemmingsStadID}" class="u-full-width" id="endLocation"
+                             label="To:" required="true" requiredMessage="Please select a city of arrival.">
                 <f:selectItem itemLabel="Select city of arrival" noSelectionOption="true"/>
                 <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
                                itemLabel="#{stad.naam}"/>
-            </h:selectOneMenu>
+            </b:selectOneMenu>
 
-            <h:outputLabel for="transportType" value="Transport type:"/>
-            <h:selectOneMenu value="#{reisController.transportmiddelID}" class="u-full-width" id="transportType">
+            <b:selectOneMenu value="#{reisController.transportmiddelID}" class="u-full-width" id="transportType"
+                             label="Tranport type:" required="true" requiredMessage="Please select a tranport type.">
                 <f:selectItem itemLabel="Select transport type" noSelectionOption="true"/>
                 <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel"
                                itemValue="#{transportmiddel.id}"
                                itemLabel="#{transportmiddel.naam}"/>
-            </h:selectOneMenu>
+            </b:selectOneMenu>
 
-            <h:outputLabel for="periode" value="Period:"/>
-            <h:selectOneMenu value="#{reisController.periodeID}" class="u-full-width" id="periode">
+            <b:selectOneMenu value="#{reisController.periodeID}" class="u-full-width" id="periode" label="Period:"
+                             required="true" requiredMessage="Please select a period.">
                 <f:selectItem itemLabel="Select period" noSelectionOption="true"/>
                 <f:selectItems value="#{periodeController.periodes}" var="periode"
                                itemValue="#{periode.id}"
                                itemLabel="#{periode.naam}"/>
-            </h:selectOneMenu>
+            </b:selectOneMenu>
 
-            <h:outputLabel for="prijs" value="Prijs:"/>
-            <h:inputText type="number" name="prijs" id="prijs" converterMessage="The value you entered is not a number." value="#{reisController.prijs}">
-                <f:convertNumber maxFractionDigits="2"/>
-            </h:inputText>
-            <h:message for="prijs"/>
+            <b:inputText label="Price"
+                         required="true"
+                         requiredMessage="Please enter a number."
+                         value="#{reisController.prijs}">
+                <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
+            </b:inputText>
+            <b:inputText label="Number of places"
+                         required="true"
+                         value="#{reisController.aantal_plaatsen}">
+                <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
+            </b:inputText>
 
-            <h:outputLabel for="plaatsen" value="Aantal plaatsen:"/>
-            <h:inputText type="number" name="plaatsen" id="plaatsen" converterMessage="The value you entered is not a number." value="#{reisController.aantal_plaatsen}">
-                <f:convertNumber maxFractionDigits="2"/>
-            </h:inputText>
-            <h:message for="plaatsen"/>
-
-
-            <h:outputLabel value="Description"/>
-            <h:inputText
+            <b:inputText
                     value="#{reisController.beschrijving}"
                     required="true"
                     requiredMessage="Please fill in a description."
-                    label="description"
                     id="description"
+                    label="Description:"
                     styleClass="u-full-width"
             />
-            <h:message for="description" styleClass="error"/>
 
-            <h:commandButton value="Ok" action="#{reisController.addReis}"/>
+            <b:commandButton value="Ok" dismiss="modal" update="@form"
+                             oncomplete="if(!validationFailed) {$('.formValidationModalClass').modal('hide')}"
+                             actionListener="#{reisController.addReis}"/>
             <h:button value="Cancel" dismiss="modal"/>
-        </h:form>
+            <b:fetchBeanInfos/>
+            <b:messages/>
+        </b:form>
     </b:modal>
 </h:body>
 </html>
