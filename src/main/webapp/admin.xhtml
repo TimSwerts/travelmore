@@ -20,11 +20,37 @@
             <div class="row search-row">    
                 <button class="btn-main" data-target="#addModal" data-toggle="modal">ADD</button>
                 <h:form>
-                    <h:dataTable value="#{reisController.reizen}" var="reis" headerClass="search-row">
-                        <h:column>#{reis.vertreklocatie.naam}</h:column>
-                        <h:column>#{reis.bestemming.naam}</h:column>
-                        <h:column>#{reis.beschrijving}</h:column>
+                    <h:dataTable value="#{reisController.reizen}" var="reis" headerClass="header">
                         <h:column>
+                            <f:facet name="header">Vertreklocatie</f:facet>
+                            #{reis.vertreklocatie.naam}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Bestemming</f:facet>
+                            #{reis.bestemming.naam}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Beschrijving</f:facet>
+                            #{reis.beschrijving}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Tranportmiddel</f:facet>
+                            #{reis.transportmiddel.naam}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Periode</f:facet>
+                            #{reis.periode.naam}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Prijs</f:facet>
+                            #{reis.prijs}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Aantal plaatsen</f:facet>
+                            #{reis.aantal_plaatsen}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
                             <h:commandButton value="DELETE" styleClass="btn-main"
                                              action="#{reisController.deleteReis(reis.id)}"/>
                         </h:column>
