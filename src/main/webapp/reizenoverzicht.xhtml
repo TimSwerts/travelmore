@@ -27,13 +27,30 @@
                                        itemValue="#{transportmiddel.id}"
                                        itemLabel="#{transportmiddel.naam}"/>
                     </h:selectOneMenu>
+
                     <h:outputLabel for="budget" value="Maximum Budget:"/>
                     <h:inputText type="number" name="budget" id="budget"
-                                 converterMessage="The value you entered is not a number."
+                                 converterMessage="Vul een getal in!"
                                  value="#{reisController.prijs}">
                         <f:convertNumber maxFractionDigits="2"/>
                     </h:inputText>
                     <h:message for="budget"/>
+
+                    <h:outputLabel for="aantal" value="Aantal vrije plaatsen:"/>
+                    <h:inputText type="number" name="aantal" id="aantal"
+                                 converterMessage="Vul een getal in!"
+                                 value="#{reisController.aantal_plaatsen}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                    </h:inputText>
+                    <h:message for="aantal"/>
+
+                    <h:outputLabel for="periodes" value="Periode:"/>
+                    <h:selectOneMenu value="#{reisController.periodeID}" id="periodes">
+                        <f:selectItem itemLabel="Selecteer periode:" noSelectionOption="true"/>
+                        <f:selectItems value="#{periodeController.periodes}" var="periode"
+                                       itemValue="#{periode.id}"
+                                       itemLabel="#{periode.naam}"/>
+                    </h:selectOneMenu>
 
                     <h:dataTable value="#{reisController.reizen}" var="reis">
                         <h:column>

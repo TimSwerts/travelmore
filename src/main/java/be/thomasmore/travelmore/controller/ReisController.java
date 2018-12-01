@@ -85,7 +85,15 @@ public class ReisController implements Serializable {
         }
 
         if (prijs > 0) {
-            query += "r.prijs <=  " + prijs + " and ";
+            query += " r.prijs <=  " + prijs + " and ";
+        }
+
+        if(aantal_plaatsen > 0){
+            query += " r.aantal_plaatsen >= " + aantal_plaatsen + " and ";
+        }
+
+        if(periodeID != 0){
+            query += " r.periode.id = " + periodeID +  " and ";
         }
 
         reizen = reisService.findByFilters(query);
