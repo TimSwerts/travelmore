@@ -18,7 +18,7 @@
     <f:view>
         <div class="container">
             <div class="row search-row">    
-                <button class="btn-main" data-target="#addModal" data-toggle="modal">ADD</button>
+                <button class="btn-main" data-target="#addModal" data-toggle="modal">TOEVOEGEN</button>
                 <h:form>
                     <h:dataTable value="#{reisController.reizen}" var="reis" headerClass="header">
                         <h:column>
@@ -34,7 +34,7 @@
                             #{reis.beschrijving}
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Tranportmiddel</f:facet>
+                            <f:facet name="header">Transportmiddel</f:facet>
                             #{reis.transportmiddel.naam}
                         </h:column>
                         <h:column>
@@ -51,7 +51,7 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header"></f:facet>
-                            <h:commandButton value="DELETE" styleClass="btn-main"
+                            <h:commandButton value="VERWIJDEREN" styleClass="btn-main"
                                              action="#{reisController.deleteReis(reis.id)}"/>
                         </h:column>
                     </h:dataTable>
@@ -60,57 +60,58 @@
         </div>
     </f:view>
 
-    <b:modal id="addModal" title="Add a trip" styleClass="formValidationModalClass" closable="false">
+    <b:modal id="addModal" title="Reis toevoegen" styleClass="formValidationModalClass" closable="false">
         <b:form>
             <b:selectOneMenu value="#{reisController.vertrekStadID}" class="u-full-width" id="startLocation"
-                             label="From: "
-                             required="true" requiredMessage="Please select a departure city.">
-                <f:selectItem itemLabel="Select departure city" noSelectionOption="true"/>
+                             label="Van: "
+                             required="true" requiredMessage="Selecteer een vertrekland.">
+                <f:selectItem itemLabel="Selecteer vertrekland" noSelectionOption="true"/>
                 <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
                                itemLabel="#{stad.naam}"/>
             </b:selectOneMenu>
 
             <b:selectOneMenu value="#{reisController.bestemmingsStadID}" class="u-full-width" id="endLocation"
-                             label="To:" required="true" requiredMessage="Please select a city of arrival.">
-                <f:selectItem itemLabel="Select city of arrival" noSelectionOption="true"/>
+                             label="Naar:" required="true" requiredMessage="Selecteer een bestemming.">
+                <f:selectItem itemLabel="Selecteer bestemming" noSelectionOption="true"/>
                 <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
                                itemLabel="#{stad.naam}"/>
             </b:selectOneMenu>
 
             <b:selectOneMenu value="#{reisController.transportmiddelID}" class="u-full-width" id="transportType"
-                             label="Tranport type:" required="true" requiredMessage="Please select a tranport type.">
-                <f:selectItem itemLabel="Select transport type" noSelectionOption="true"/>
+                             label="Transportmiddel:" required="true" requiredMessage="Selecteer een transportmiddel.">
+                <f:selectItem itemLabel="Selecteer transportmiddel" noSelectionOption="true"/>
                 <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel"
                                itemValue="#{transportmiddel.id}"
                                itemLabel="#{transportmiddel.naam}"/>
             </b:selectOneMenu>
 
-            <b:selectOneMenu value="#{reisController.periodeID}" class="u-full-width" id="periode" label="Period:"
-                             required="true" requiredMessage="Please select a period.">
-                <f:selectItem itemLabel="Select period" noSelectionOption="true"/>
+            <b:selectOneMenu value="#{reisController.periodeID}" class="u-full-width" id="periode" label="Periode:"
+                             required="true" requiredMessage="Selecteer een periode.">
+                <f:selectItem itemLabel="Selecteer periode" noSelectionOption="true"/>
                 <f:selectItems value="#{periodeController.periodes}" var="periode"
                                itemValue="#{periode.id}"
                                itemLabel="#{periode.naam}"/>
             </b:selectOneMenu>
 
-            <b:inputText label="Price"
+            <b:inputText label="Prijs"
                          required="true"
-                         requiredMessage="Please enter a number."
-                         value="#{reisController.prijs}">
+                         value="#{reisController.prijs}"
+                         converterMessage="Vul een getal in.">
                 <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
             </b:inputText>
-            <b:inputText label="Number of places"
+            <b:inputText label="Aantal plaatsen"
                          required="true"
-                         value="#{reisController.aantal_plaatsen}">
+                         value="#{reisController.aantal_plaatsen}"
+                         converterMessage="Vul een getal in.">
                 <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
             </b:inputText>
 
             <b:inputText
                     value="#{reisController.beschrijving}"
                     required="true"
-                    requiredMessage="Please fill in a description."
+                    requiredMessage="Vul een beschrijving in."
                     id="description"
-                    label="Description:"
+                    label="Beschrijving:"
                     styleClass="u-full-width"
             />
 
