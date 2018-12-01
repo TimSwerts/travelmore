@@ -18,8 +18,18 @@ import java.io.Serializable;
 
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class PersoonController implements Serializable {
+
+    public String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     @Inject
     PersoonService persoonService;
@@ -39,10 +49,21 @@ public class PersoonController implements Serializable {
     public String login(){
         Persoon persoon = persoonService.controleerEmailWachtwoord(loginPersoon);
 
-        if (persoon != null ){
-            maakLoginSessie(persoon);
+        if (persoon != null){
+            if (persoon.getActief()){
+                maakLoginSessie(persoon);
+                return "index";
+            } else {
+                 this.setMessage("Uw account is nog niet geactiveerd");
+            }
+
+        } else {
+            this.setMessage("Onjuiste aanmeldgegevens");
         }
-        return "index";
+
+
+        return "login";
+
     }
 
 

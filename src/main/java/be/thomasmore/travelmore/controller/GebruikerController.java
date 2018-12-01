@@ -2,16 +2,22 @@ package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.service.GebruikerService;
+import org.primefaces.component.outputlabel.OutputLabel;
 import sun.rmi.runtime.Log;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.html.HtmlOutputLabel;
+import javax.faces.context.FacesContextWrapper;
 import javax.inject.Inject;
+import javax.management.Query;
 import java.io.Serializable;
+import java.lang.reflect.Parameter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,6 +36,13 @@ public class GebruikerController implements Serializable {
         this.newGebruiker = newGebruiker;
     }
 
+    public String token;
+
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Inject
     private GebruikerService gebruikerService;
 
@@ -37,19 +50,40 @@ public class GebruikerController implements Serializable {
         //gebruiker op inactief zetten
         newGebruiker.setActief(false);
 
+
+
         //controle gegevens
-        if (newGebruiker.getWachtwoord().equals(controleWachtwoord) && !gebruikerService.controleerEmailGebruikt(newGebruiker) && validate(newGebruiker.getEmail()) && checkRRN()) {
+        if (newGebruiker.getWachtwoord().equals(controleWachtwoord) && !gebruikerService.controleerEmailGebruikt(newGebruiker) ) {
             System.out.println("Succes");
+            newGebruiker.generateToken();
+            newGebruiker = gebruikerService.insert(newGebruiker);
             newGebruiker.stuurBevestigingsMail();
-            gebruikerService.insert(newGebruiker);
 
             return "login";
         }
         return "registreer";
     }
 
+    public String bevestigRegistratie(int id, String code ){
+        String message = "";
 
-    private Boolean checkRRN() {
+        Gebruiker gebruiker = gebruikerService.findGebruikerById(id);
+        if (gebruiker != null && gebruiker.getConfirmationToken().equals(code)){
+           gebruiker.setActief(true);
+           gebruikerService.update(gebruiker);
+           message += "Uw registratie is bevestigd beste " + gebruiker.getVoornaam() + " " + gebruiker.getAchternaam();
+        } else {
+            message += "Onjuiste gegevens";
+        }
+
+
+
+        return message;
+
+    }
+
+
+    /*private Boolean checkRRN() {
         //  Format datum
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -74,7 +108,7 @@ public class GebruikerController implements Serializable {
             }
         }
         return false;
-    }
+    }*/
 
     public String login() {
 

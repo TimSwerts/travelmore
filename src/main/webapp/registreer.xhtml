@@ -125,5 +125,11 @@
         </h:form>
     </f:view>
 
+
+    <h:outputScript>
+        var urlParams = new URLSearchParams(window.location.search);
+        var myParam = urlParams.get('code');
+
+    </h:outputScript>
 </h:body>
 </html>
