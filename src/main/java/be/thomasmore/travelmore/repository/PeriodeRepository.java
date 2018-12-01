@@ -15,6 +15,6 @@ public class PeriodeRepository {
     }
 
     public Periode findById(int id){
-        return entityManager.createNamedQuery(Periode.FIND_BY_ID, Periode.class).getSingleResult();
+        return entityManager.createNamedQuery(Periode.FIND_BY_ID, Periode.class).setParameter("id", id).getSingleResult();
     }
 }
