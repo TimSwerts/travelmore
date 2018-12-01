@@ -39,6 +39,9 @@ public class Persoon {
     @Size(max = 255)
     private String wachtwoord;
 
+    @Column(name = "actief")
+    private Boolean actief;
+
 
     public Persoon() {
     }
@@ -83,4 +86,11 @@ public class Persoon {
         this.wachtwoord = wachtwoord;
     }
 
+    public Boolean getActief() {
+        return actief;
+    }
+
+    public void setActief(Boolean actief) {
+        this.actief = actief;
+    }
 }

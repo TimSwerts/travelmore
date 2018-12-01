@@ -26,7 +26,11 @@ import java.util.*;
                 @NamedQuery(
                         name= Gebruiker.FIND_BY_TOKEN,
                         query = "select count(p) from Persoon p where p.confirmationToken = :token"
-                )
+                ),
+                @NamedQuery(
+                name= Gebruiker.FIND_BY_GEBRUIKER_BY_EMAIL,
+                query = "select p from Persoon p where p.email = :email AND PERSOONTYPE(p) ='Gebruiker'"
+                ),
         }
 )
 
@@ -34,13 +38,13 @@ public class Gebruiker extends Persoon {
     public static final String FIND_ALL = "Gebruiker.findAll";
     public static final String FIND_BY_EMAIL = "Gebruiker.findByEmail";
     public static final String FIND_BY_TOKEN = "Gebruiker.findByToken";
-    public static final String FIND_BY_ID = "Gebruiker.findById";
+    public static final String FIND_BY_GEBRUIKER_BY_EMAIL = "Gebruiker.findPersoonByEmail";
+
 
     @Column(name = "rijksregisternummer")
     private String rijksregisternummer;
 
-    @Column(name = "actief")
-    private Boolean actief;
+
 
     @Column(name = "geboortedatum")
     private Date geboortedatum;
@@ -63,14 +67,6 @@ public class Gebruiker extends Persoon {
         this.rijksregisternummer = rijksregisternummer;
     }
 
-    public Boolean getActief() {
-        return actief;
-    }
-
-    public void setActief(Boolean actief) {
-        this.actief = actief;
-    }
-
     public Date getGeboortedatum() {
         return geboortedatum;
     }
@@ -91,7 +87,7 @@ public class Gebruiker extends Persoon {
 
         //setup
         String to = this.getEmail();
-        String msg = "Gebruik volgende code bij uw eerste aanmelding:" + this.getConfirmationToken() ;
+        String msg = "volg volgende link om uw registratie te bevestigen: localhost:8081/travelmore/bevestigreg?code=" + getConfirmationToken() + "&id=" + this .getId();
         EmailUtil emailUtil = new EmailUtil();
         emailUtil.sendEmail(to, msg);
     }
