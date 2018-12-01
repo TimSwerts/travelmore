@@ -87,7 +87,7 @@ public class Gebruiker extends Persoon {
 
         //setup
         String to = this.getEmail();
-        String msg = "volg volgende link om uw registratie te bevestigen: localhost:8081/travelmore/bevestigreg?code=" + getConfirmationToken() + "&id=" + this .getId();
+        String msg = "volg volgende link om uw registratie te bevestigen: localhost:8081/travelmore/bevestigreg.xhtml?code=" + getConfirmationToken() + "&id=" + this .getId();
         EmailUtil emailUtil = new EmailUtil();
         emailUtil.sendEmail(to, msg);
     }
