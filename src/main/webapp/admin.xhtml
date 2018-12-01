@@ -24,7 +24,6 @@
                         <h:column>#{reis.vertreklocatie.naam}</h:column>
                         <h:column>#{reis.bestemming.naam}</h:column>
                         <h:column>#{reis.beschrijving}</h:column>
-                        <!-- fontawesome? -->
                         <h:column>
                             <h:commandButton value="DELETE" styleClass="btn-main"
                                              action="#{reisController.deleteReis(reis.id)}"/>
@@ -59,6 +58,27 @@
                                itemValue="#{transportmiddel.id}"
                                itemLabel="#{transportmiddel.naam}"/>
             </h:selectOneMenu>
+
+            <h:outputLabel for="periode" value="Period:"/>
+            <h:selectOneMenu value="#{reisController.periodeID}" class="u-full-width" id="periode">
+                <f:selectItem itemLabel="Select period" noSelectionOption="true"/>
+                <f:selectItems value="#{periodeController.periodes}" var="periode"
+                               itemValue="#{periode.id}"
+                               itemLabel="#{periode.naam}"/>
+            </h:selectOneMenu>
+
+            <h:outputLabel for="prijs" value="Prijs:"/>
+            <h:inputText type="number" name="prijs" id="prijs" converterMessage="The value you entered is not a number." value="#{reisController.prijs}">
+                <f:convertNumber maxFractionDigits="2"/>
+            </h:inputText>
+            <h:message for="prijs"/>
+
+            <h:outputLabel for="plaatsen" value="Aantal plaatsen:"/>
+            <h:inputText type="number" name="plaatsen" id="plaatsen" converterMessage="The value you entered is not a number." value="#{reisController.aantal_plaatsen}">
+                <f:convertNumber maxFractionDigits="2"/>
+            </h:inputText>
+            <h:message for="plaatsen"/>
+
 
             <h:outputLabel value="Description"/>
             <h:inputText
