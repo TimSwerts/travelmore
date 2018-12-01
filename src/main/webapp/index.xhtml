@@ -24,23 +24,23 @@
         <h:form>
             <div class="row search-row">
                 <div class="six columns">
-                    <h:outputLabel for="startLocation" value="From: "/>
+                    <h:outputLabel for="startLocation" value="Van: "/>
 
                     <h:selectOneMenu value="#{reisController.vertrekLandID}" class="u-full-width" id="startLocation" placeholder="Start location">
-                        <f:selectItem itemLabel="Select departure country" noSelectionOption="true" />
+                        <f:selectItem itemLabel="Selecteer startlocatie" noSelectionOption="true" />
                         <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}" itemLabel="#{land.naam}" />
                     </h:selectOneMenu>
                 </div>
                 <div class="six columns">
-                    <h:outputLabel for="endLocation" value="To:"/>
+                    <h:outputLabel for="endLocation" value="Naar:"/>
 
                     <h:selectOneMenu value="#{reisController.bestemmingsLandID}" class="u-full-width" id="endLocation">
-                        <f:selectItem itemLabel="Select country of arrival" noSelectionOption="true" />
+                        <f:selectItem itemLabel="Selecteer bestemming" noSelectionOption="true" />
                         <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}" itemLabel="#{land.naam}" />
                     </h:selectOneMenu>
 
                 </div>
-                <h:commandButton value="Search" class="btn-main btn-search"  action="#{reisController.overzichtReizen}"/>
+                <h:commandButton value="Zoeken" class="btn-main btn-search"  action="#{reisController.overzichtReizen}"/>
             </div>
         </h:form>
     </div>

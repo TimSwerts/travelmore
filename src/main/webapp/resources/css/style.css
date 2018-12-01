@@ -29,11 +29,11 @@ body {
     letter-spacing: 2px;
 }
 
-.btn-search{
+.btn-search {
     margin-top: 2rem !important;
 }
 
-.btn-login{
+.btn-login {
     position: absolute;
     right: 30px;
     height: 44px !important;
@@ -51,10 +51,16 @@ body {
 .navbar {
     list-style-type: none;
 }
+
 .navbar li {
     float: left;
 }
 
-.error{
+.error {
     color: red !important;
+}
+
+.header {
+    padding: 1rem;
+    color: #fff;
 }
