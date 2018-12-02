@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row search-row">    
                 <button class="btn-main" data-target="#addModal" data-toggle="modal">TOEVOEGEN</button>
-                <h:form>
+                <b:form id="form">
                     <h:dataTable value="#{reisController.reizen}" var="reis" headerClass="header">
                         <h:column>
                             <f:facet name="header">Vertreklocatie</f:facet>
@@ -55,7 +55,7 @@
                                              action="#{reisController.deleteReis(reis.id)}"/>
                         </h:column>
                     </h:dataTable>
-                </h:form>
+                </b:form>
             </div>
         </div>
     </f:view>
@@ -115,7 +115,7 @@
                     styleClass="u-full-width"
             />
 
-            <b:commandButton value="Ok" dismiss="modal" update="@form"
+            <b:commandButton value="Ok" dismiss="modal" update="@form @(#form)"
                              oncomplete="if(!validationFailed) {$('.formValidationModalClass').modal('hide')}"
                              actionListener="#{reisController.addReis}"/>
             <h:button value="Cancel" dismiss="modal"/>
