@@ -64,3 +64,12 @@ body {
     padding: 1rem;
     color: #fff;
 }
+
+.no-margin-left{
+    margin-left: 0px !important;
+}
+
+.no-margin-left:after{
+    content: '.';
+    visibility: hidden;
+}
