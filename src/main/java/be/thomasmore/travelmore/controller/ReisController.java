@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -42,6 +43,7 @@ public class ReisController implements Serializable {
 
     public String overzichtReizen() {
         reizen = this.reisService.findAllByVertrekAndBestemming(bestemmingsLandID, vertrekLandID);
+        maakVariabeleLeeg(false);
         return "reizenoverzicht";
     }
 
@@ -69,6 +71,8 @@ public class ReisController implements Serializable {
 
         this.reisService.addReis(reis);
         reizen = this.reisService.findAll();
+
+        maakVariabeleLeeg(true);
     }
 
     public void deleteReis(int reisId) {
@@ -98,6 +102,21 @@ public class ReisController implements Serializable {
 
         reizen = reisService.findByFilters(query);
         return "reizenoverzicht";
+    }
+
+    private void maakVariabeleLeeg(boolean vertrek_bestemming){
+        if(vertrek_bestemming){
+            bestemmingsLandID = 0;
+            vertrekLandID = 0;
+        }
+
+        beschrijving = "";
+        transportmiddelID = 0;
+        vertrekStadID = 0;
+        bestemmingsStadID = 0;
+        prijs = 0;
+        periodeID = 0;
+        aantal_plaatsen = 0;
     }
 
     public List<Reis> getReizen() {
