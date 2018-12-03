@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Betaling;
+import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.service.BetalingService;
 
 import javax.faces.bean.ManagedBean;
@@ -23,6 +24,9 @@ public class BetalingController implements Serializable {
 
     @Inject
     private BetalingService betalingService;
+
+    @Inject
+    private GebruikerController gebruikerController;
 
     public Betaling getBetaling(int id){
         return this.betalingService.findBetalingById(id);

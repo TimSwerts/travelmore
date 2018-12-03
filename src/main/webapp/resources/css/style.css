@@ -58,3 +58,7 @@ body {
 .error{
     color: red !important;
 }
+
+.ui-spinner-input{
+    padding: 20px !important;
+}

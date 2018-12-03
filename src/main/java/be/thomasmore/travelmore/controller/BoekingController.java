@@ -2,6 +2,7 @@ package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Boeking;
 import be.thomasmore.travelmore.service.BoekingService;
+import be.thomasmore.travelmore.service.ReisService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -20,14 +21,23 @@ public class BoekingController implements Serializable {
     public Boeking newBoeking = new Boeking();
     private List<Boeking> boekingen;
 
+
+
     @Inject
     private BoekingService boekingService;
+
+    @Inject
+    private ReisController reisController;
 
     public Boeking getBoeking(int id){
         return this.boekingService.findBoekingById(id);
     }
 
     public String addBoeking(Boeking nieuw){
+        nieuw.setReis(this.reisController.getById(1));
+
+        System.out.println(nieuw.getAantalKinderen());
+        System.out.println(nieuw.getReis());
         this.boekingService.addBoeking(nieuw);
         return "Geslaagd";
     }

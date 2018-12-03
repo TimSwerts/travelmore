@@ -36,6 +36,9 @@ public class Reis {
     @Column(name = "beschrijving")
     private String beschrijving;
 
+    @Column(name = "prijs")
+    private int prijs;
+
     @ManyToOne
     private Stad vertreklocatie;
 
@@ -86,5 +89,13 @@ public class Reis {
 
     public void setTransportmiddel(Transportmiddel transportmiddel) {
         this.transportmiddel = transportmiddel;
+    }
+
+    public int getPrijs() {
+        return prijs;
+    }
+
+    public void setPrijs(int prijs) {
+        this.prijs = prijs;
     }
 }
