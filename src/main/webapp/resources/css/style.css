@@ -35,8 +35,17 @@ body {
 
 .btn-login{
     position: absolute;
+    top: 11px;
     right: 30px;
-    height: 44px !important;
+    height: 22px !important;
+    color: white !important;
+    border: none !important;
+}
+
+.navbar-line {
+    border-left: white 1px solid !important;
+    border-radius: 0 !important;
+    line-height: 22px !important;
 }
 
 .navbar-row {
@@ -45,12 +54,13 @@ body {
     background-color: rgba(19, 26, 32, 0.70);
     height: 4.5rem;
     width: 100%;
-    padding: 10px 0;
+    padding: 0;
 }
 
 .navbar {
     list-style-type: none;
 }
+
 .navbar li {
     float: left;
 }
@@ -58,3 +68,6 @@ body {
 .error{
     color: red !important;
 }
+
+
+
