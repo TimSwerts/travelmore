@@ -10,10 +10,8 @@ import java.util.List;
         {
                 @NamedQuery(
                         name = Reis.FIND_ALL_BY_VERTREK_BESTEMMING,
-//                        query = "SELECT r from Reis r where r.bestemming.id = (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.id = (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
                         query = "SELECT r from Reis r where r.bestemming.land.id = (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.land.id = (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
-
-                ),// and r.vertreklocatie_id =(select s.land_id from stad s where s.land_id = 2)
+                ),
                 @NamedQuery(
                         name = Reis.FIND_ALL,
                         query = "select r from Reis r"
@@ -37,7 +35,7 @@ public class Reis {
     private String beschrijving;
 
     @Column(name = "prijs")
-    private int prijs;
+    private double prijs;
 
     @ManyToOne
     private Stad vertreklocatie;
@@ -47,6 +45,12 @@ public class Reis {
 
     @ManyToOne
     private Transportmiddel transportmiddel;
+
+    @Column
+    private int aantal_plaatsen;
+
+    @ManyToOne
+    private Periode periode;
 
     public Reis() {
     }
@@ -91,11 +95,27 @@ public class Reis {
         this.transportmiddel = transportmiddel;
     }
 
-    public int getPrijs() {
+    public double getPrijs() {
         return prijs;
     }
 
-    public void setPrijs(int prijs) {
+    public void setPrijs(double prijs) {
         this.prijs = prijs;
+    }
+
+    public Periode getPeriode() {
+        return periode;
+    }
+
+    public void setPeriode(Periode periode) {
+        this.periode = periode;
+    }
+
+    public int getAantal_plaatsen() {
+        return aantal_plaatsen;
+    }
+
+    public void setAantal_plaatsen(int aantal_plaatsen) {
+        this.aantal_plaatsen = aantal_plaatsen;
     }
 }
