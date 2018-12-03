@@ -16,14 +16,20 @@ public class GebruikerService {
         return gebruikerRepository.findById(id);
     }
 
-    public void insert(Gebruiker gebruiker){
-        gebruikerRepository.insert(gebruiker);
+    public Gebruiker insert(Gebruiker gebruiker){
+        return gebruikerRepository.insert(gebruiker);
     }
 
     public boolean controleerEmailGebruikt(Gebruiker gebruiker){
         return gebruikerRepository.controleerEmailGebruikt(gebruiker);
 
     }
+
+    public void update(Gebruiker gebruiker){
+        gebruikerRepository.update(gebruiker);
+    }
+
+
 
 
 

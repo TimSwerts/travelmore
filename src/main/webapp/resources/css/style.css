@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+.username{
+    color: rgba(255,255,255,1) !important;
+}
+
 .bg-image {
     position: relative;
     display: table;
@@ -20,6 +24,12 @@ body {
     color: #fff;
     border-radius: 10px;
 }
+div.dataTables_wrapper div.dataTables_filter label{
+    text-align: right !important;
+}
+td{
+    background-color: rgb(88, 19, 0) !important;
+}
 
 .btn-main {
     background-color: transparent;
@@ -27,13 +37,14 @@ body {
     font-weight: bold !important;
     text-transform: uppercase;
     letter-spacing: 2px;
+    margin-bottom: 30px;
 }
 
-.btn-search{
+.btn-search {
     margin-top: 2rem !important;
 }
 
-.btn-login{
+.btn-login {
     position: absolute;
     top: 11px;
     right: 30px;
@@ -65,9 +76,20 @@ body {
     float: left;
 }
 
-.error{
+.error {
     color: red !important;
 }
 
+.header {
+    padding: 1rem;
+    color: #fff;
+}
 
+.no-margin-left{
+    margin-left: 0px !important;
+}
 
+.no-margin-left:after{
+    content: '.';
+    visibility: hidden;
+}

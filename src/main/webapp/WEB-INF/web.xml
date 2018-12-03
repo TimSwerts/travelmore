@@ -50,4 +50,37 @@
         <param-value>/resources</param-value>
     </context-param>
 
+    <!--Algemeen login-->
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>be.thomasmore.travelmore.filter.LoginFilter</filter-class>
+    </filter>
+    <!--Admin -->
+    <filter>
+        <filter-name>adminFilter</filter-name>
+        <filter-class>be.thomasmore.travelmore.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern>/admin.xhtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern>/stadbeheer.xhtml</url-pattern>
+    </filter-mapping>
+
+    <!--ingelogd-->
+    <filter>
+        <filter-name>loggedInFilter</filter-name>
+        <filter-class>be.thomasmore.travelmore.filter.LoggedInFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>loggedInFilter</filter-name>
+        <url-pattern>/login.xhtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>loggedInFilter</filter-name>
+        <url-pattern>/registreer.xhtml</url-pattern>
+    </filter-mapping>
 </web-app>

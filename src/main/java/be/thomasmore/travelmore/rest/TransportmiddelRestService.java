@@ -4,6 +4,7 @@ import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.domain.Transportmiddel;
 import be.thomasmore.travelmore.service.GebruikerService;
 import be.thomasmore.travelmore.service.TransportmiddelService;
+import jdk.nashorn.internal.objects.annotations.Getter;
 
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
@@ -66,4 +67,5 @@ public class TransportmiddelRestService {
                 .status(Response.Status.NOT_MODIFIED)
                 .entity("Er trad een fout op tijdens het verwijderen van het transportmiddel.").build();
     }
+
 }

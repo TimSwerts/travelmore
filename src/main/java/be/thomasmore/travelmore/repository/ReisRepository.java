@@ -31,4 +31,9 @@ public class ReisRepository {
         entityManager.remove(reis);
         entityManager.flush();
     }
+
+    public List<Reis> findByFilters(String queryParam){
+        String query = queryParam.substring(0, queryParam.length() - 5);
+        return entityManager.createQuery(query).getResultList();
+    }
 }

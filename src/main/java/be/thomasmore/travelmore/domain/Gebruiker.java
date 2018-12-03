@@ -1,6 +1,8 @@
 package be.thomasmore.travelmore.domain;
 
 
+import be.thomasmore.travelmore.util.EmailUtil;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -24,7 +26,11 @@ import java.util.*;
                 @NamedQuery(
                         name= Gebruiker.FIND_BY_TOKEN,
                         query = "select count(p) from Persoon p where p.confirmationToken = :token"
-                )
+                ),
+                @NamedQuery(
+                name= Gebruiker.FIND_BY_GEBRUIKER_BY_EMAIL,
+                query = "select p from Persoon p where p.email = :email AND PERSOONTYPE(p) ='Gebruiker'"
+                ),
         }
 )
 
@@ -32,13 +38,13 @@ public class Gebruiker extends Persoon {
     public static final String FIND_ALL = "Gebruiker.findAll";
     public static final String FIND_BY_EMAIL = "Gebruiker.findByEmail";
     public static final String FIND_BY_TOKEN = "Gebruiker.findByToken";
-    public static final String FIND_BY_ID = "Gebruiker.findById";
+    public static final String FIND_BY_GEBRUIKER_BY_EMAIL = "Gebruiker.findPersoonByEmail";
+
 
     @Column(name = "rijksregisternummer")
     private String rijksregisternummer;
 
-    @Column(name = "actief")
-    private Boolean actief;
+
 
     @Column(name = "geboortedatum")
     private Date geboortedatum;
@@ -61,14 +67,6 @@ public class Gebruiker extends Persoon {
         this.rijksregisternummer = rijksregisternummer;
     }
 
-    public Boolean getActief() {
-        return actief;
-    }
-
-    public void setActief(Boolean actief) {
-        this.actief = actief;
-    }
-
     public Date getGeboortedatum() {
         return geboortedatum;
     }
@@ -86,68 +84,22 @@ public class Gebruiker extends Persoon {
     }
 
     public void stuurBevestigingsMail(){
+
         //setup
-        this.setConfirmationToken(generateToken());
-        final String host = "smtp.gmail.com";
-        final String from = "javaproject024@gmail.com\n";
-        final String password = "TMK2018!";
-        final String port = "587 ";
         String to = this.getEmail();
-
-        Properties prop = new Properties();
-        prop.put("mail.smtp.auth", true);
-        prop.put("mail.smtp.starttls.enable", "true");
-        prop.put("mail.smtp.host", host);
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.ssl.trust", host);
-
-        Session session = Session.getInstance(prop, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from , password);
-            }
-        });
-
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.setRecipients(
-                    Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject("Bevestig uw registratie");
-
-
-            String msg = "Gebruik volgende code bij uw eerste aanmelding:" + this.getConfirmationToken() ;
-
-            MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setContent(msg, "text/html");
-
-            Multipart multipart = new MimeMultipart();
-            multipart.addBodyPart(mimeBodyPart);
-
-            message.setContent(multipart);
-
-            Transport.send(message);
-
-            System.out.println("joepie");
-        } catch (Exception e){
-            System.out.println(e);
-        }
-
-
-
-
-
+        String msg = "volg volgende link om uw registratie te bevestigen: localhost:8081/travelmore/bevestigreg.xhtml?code=" + getConfirmationToken() + "&id=" + this .getId();
+        EmailUtil emailUtil = new EmailUtil();
+        emailUtil.sendEmail(to, msg);
     }
 
-    private String generateToken(){
+    public void generateToken(){
         int token;
 
         Random random = new Random();
 
         token = random.nextInt(400 - 100) + 100;
 
-
-        return token + "" ;
+        this.setConfirmationToken(token + "");
     }
 
 

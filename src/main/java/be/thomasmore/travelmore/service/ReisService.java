@@ -26,4 +26,6 @@ public class ReisService {
     public Reis findReisById(int id){ return reisRepository.findReisById(id);}
 
     public void delete(Reis reis){ reisRepository.delete(reis);}
+
+    public List<Reis> findByFilters(String query){ return reisRepository.findByFilters(query); }
 }
