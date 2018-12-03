@@ -20,10 +20,6 @@
                                      action="#{persoonController.logout()}" value="Afmelden"/></li>
                 <li><h:button value="Login" outcome="login.xhtml" rendered="#{!persoonController.isAangemeld()}"
                               class="btn btn-login navbar-line"/></li>
-                <li><h:commandButton styleClass="btn btn-login" rendered="#{persoonController.isAangemeld()}"
-                                     action="#{persoonController.logout()}" value="Afmelden"/></li>
-                <li><h:button value="Login" outcome="login.xhtml" rendered="#{!persoonController.isAangemeld()}"
-                              class="btn btn-login"/></li>
                 <li><h:commandButton value="Reizen beheren" styleClass="btn-main" action="#{reisController.testAdmin()}"
                                      rendered="#{persoonController.isAdmin()}"></h:commandButton></li>
                 <li><h:commandButton value="Steden beheren" styleClass="btn-main" action="stadbeheer"
