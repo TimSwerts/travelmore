@@ -77,6 +77,7 @@ td{
 
 .error {
     color: red !important;
+    font-weight: bold;
 }
 
 .header {
@@ -94,24 +95,80 @@ td{
 }
 
 .logincontainer {
-    background-color: lightgray !important;
+    background-color: transparent !important;
     padding: 20px !important;
+    border: white solid 2px;
     border-radius: 5px;
+    color: white;
 }
 
 .containerLogin {
-    margin-top: 28vh !important;
+    padding-top: 28vh !important;
 }
 
 .logintitel {
     text-align: center !important;
-    color: lightgray;
+    color: black;
+    font-weight: bold;
 }
 
 .loginbody {
-    background-color: darkslategray;
+    background-color: rgba(19, 26, 32, 0.70);
+    height: 100vh;
 }
 
 .btn-aanmelden {
-    color: #222 !important;
+    background-color: transparent !important;
+    color: white !important;
+    border: white solid 2px !important;
 }
+
+.registreercontainer {
+    background-color: transparent !important;
+    padding: 20px !important;
+    border-radius: 5px;
+    color: white;
+}
+
+.containerRegistreer {
+    padding-top: 12vh !important;
+}
+
+.registreertitel {
+    text-align: center !important;
+    color: black;
+}
+
+.registreerbody {
+    background-color: rgba(19, 26, 32, 0.70);
+    height: 100vh;
+}
+
+.input {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+.aanmeldlink {
+    float: right;
+    margin-top: -50px;
+    color: white !important;
+}
+
+.aanmeldlink:hover {
+    color: dodgerblue !important;
+}
+
+.width {
+    width: 100%;
+}
+
+.ui-inputfield {
+    margin-bottom: 15px !important;
+    background: transparent !important;
+}
+
+form {
+    margin-bottom: 0 !important;
+}
+
