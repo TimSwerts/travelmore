@@ -250,11 +250,11 @@ input[type="tel"],
 input[type="url"],
 input[type="password"],
 textarea {
+  height: 34px;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none; }
 textarea {
-  min-height: 65px;
   padding-top: 6px;
   padding-bottom: 6px; }
 input[type="email"]:focus,
