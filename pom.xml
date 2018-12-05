@@ -25,6 +25,8 @@
             <version>4.2.2</version>
             <type>pom</type>
         </dependency>
+
+
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>

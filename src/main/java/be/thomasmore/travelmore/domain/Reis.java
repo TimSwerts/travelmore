@@ -34,6 +34,9 @@ public class Reis {
     @Column(name = "beschrijving")
     private String beschrijving;
 
+    @Column(name = "prijs")
+    private double prijs;
+
     @ManyToOne
     private Stad vertreklocatie;
 
@@ -42,9 +45,6 @@ public class Reis {
 
     @ManyToOne
     private Transportmiddel transportmiddel;
-
-    @Column
-    private double prijs;
 
     @Column
     private int aantal_plaatsen;

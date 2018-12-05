@@ -71,6 +71,10 @@ td{
     color: red !important;
 }
 
+.ui-spinner-input {
+    padding: 20px !important;
+}
+
 .header {
     padding: 1rem;
     color: #fff;
@@ -83,4 +87,5 @@ td{
 .no-margin-left:after{
     content: '.';
     visibility: hidden;
+
 }
