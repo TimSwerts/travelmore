@@ -20,41 +20,28 @@
             <div class="row search-row">    
                 <button class="btn-main" data-target="#addModal" data-toggle="modal">TOEVOEGEN</button>
                 <b:form id="form">
-                    <h:dataTable value="#{reisController.reizen}" var="reis" headerClass="header">
-                        <h:column>
-                            <f:facet name="header">Vertreklocatie</f:facet>
-                            #{reis.vertreklocatie.naam}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Bestemming</f:facet>
-                            #{reis.bestemming.naam}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Beschrijving</f:facet>
-                            #{reis.beschrijving}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Transportmiddel</f:facet>
-                            #{reis.transportmiddel.naam}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Periode</f:facet>
-                            #{reis.periode.naam}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Prijs</f:facet>
-                            #{reis.prijs}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Aantal plaatsen</f:facet>
-                            #{reis.aantal_plaatsen}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header"></f:facet>
-                            <h:commandButton value="VERWIJDEREN" styleClass="btn-main"
-                                             action="#{reisController.deleteReis(reis.id)}"/>
-                        </h:column>
-                    </h:dataTable>
+                    <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
+                        <f:facet name="header">
+                            <tr>
+                                <th>Vertrek</th>
+                                <th>Bestemming</th>
+                                <th>Omschrijving</th>
+                                <th>Transportmiddel</th>
+                                <th>Periode</th>
+                                <th>Prijs</th>
+                                <th>Aantal plaatsen</th>
+                                <th></th>
+                            </tr>
+                        </f:facet>
+                        <b:dataTableColumn value="#{reis.vertreklocatie.naam}" />
+                        <b:dataTableColumn value="#{reis.bestemming.naam}" />
+                        <b:dataTableColumn value="#{reis.beschrijving}" />
+                        <b:dataTableColumn value="#{reis.transportmiddel.naam}" />
+                        <b:dataTableColumn value="#{reis.periode.naam}" />
+                        <b:dataTableColumn value="#{reis.prijs}" />
+                        <b:dataTableColumn value="#{reis.aantal_plaatsen}" />
+                        <b:dataTableColumn><b:commandButton icon="trash" action="#{reisController.deleteReis(reis.id)}"/></b:dataTableColumn>
+                    </b:dataTable>
                 </b:form>
             </div>
         </div>
