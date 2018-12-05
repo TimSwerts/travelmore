@@ -3,18 +3,23 @@ body {
     padding: 0;
 }
 
-.username{
-    color: rgba(255,255,255,1) !important;
+.username {
+    position: relative;
+    left: 20px;
+    border: none !important;
+    color: white !important;
+    height: 22px !important;
+    padding-right: 20px;
+    top: 10px;
 }
 
 .bg-image {
     position: relative;
     display: table;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
-    url(../images/bg-image.jpg);
-    background-repeat: no-repeat;
+    url("#{resource['images:bg-image.jpg']}") no-repeat;
 }
 
 .search-row {
@@ -24,8 +29,13 @@ body {
     color: #fff;
     border-radius: 10px;
 }
-div.dataTables_wrapper div.dataTables_filter label{
+
+div.dataTables_wrapper div.dataTables_filter label {
     text-align: right !important;
+}
+
+td {
+    background-color: rgb(88, 19, 0) !important;
 }
 
 .tabel td{
@@ -48,21 +58,43 @@ div.dataTables_wrapper div.dataTables_filter label{
 
 .btn-login {
     position: absolute;
+    top: 11px;
     right: 30px;
-    height: 44px !important;
+    height: 22px !important;
+    color: white !important;
+    border: none !important;
+    padding-left: 20px;
+}
+
+.btn-admin {
+    position: absolute;
+    top: 11px;
+    right: 150px;
+    border: none !important;
+    color: white !important;
+    height: 22px !important;
+    z-index: 999;
+}
+
+.navbar-line {
+    border-left: white 1px solid !important;
+    border-radius: 0 !important;
+    line-height: 22px !important;
+    padding-left: 30px;
 }
 
 .navbar-row {
     position: absolute;
-    top: 0px;
+    top: 0;
     background-color: rgba(19, 26, 32, 0.70);
     height: 4.5rem;
     width: 100%;
-    padding: 10px 0;
+    padding: 0;
 }
 
 .navbar {
     list-style-type: none;
+    margin-bottom: 0 !important;
 }
 
 .navbar li {
@@ -71,6 +103,7 @@ div.dataTables_wrapper div.dataTables_filter label{
 
 .error {
     color: red !important;
+    font-weight: bold;
 }
 
 .ui-spinner-input {
@@ -82,12 +115,98 @@ div.dataTables_wrapper div.dataTables_filter label{
     color: #fff;
 }
 
-.no-margin-left{
-    margin-left: 0px !important;
+.no-margin-left {
+    margin-left: 0 !important;
 }
 
-.no-margin-left:after{
+.no-margin-left:after {
     content: '.';
     visibility: hidden;
 
+}
+
+.logincontainer {
+    background-color: transparent !important;
+    padding: 20px !important;
+    border: white solid 2px;
+    border-radius: 5px;
+    color: white;
+}
+
+.containerLogin {
+    padding-top: 28vh !important;
+}
+
+.logintitel {
+    text-align: center !important;
+    color: black;
+    font-weight: bold;
+}
+
+.loginbody {
+    background-color: rgba(19, 26, 32, 0.70);
+    height: 100vh;
+}
+
+.btn-aanmelden {
+    background-color: transparent !important;
+    color: white !important;
+    border: white solid 2px !important;
+}
+
+.registreercontainer {
+    background-color: transparent !important;
+    padding: 20px !important;
+    border-radius: 5px;
+    color: white;
+}
+
+.containerRegistreer {
+    padding-top: 12vh !important;
+}
+
+.registreertitel {
+    text-align: center !important;
+    color: black;
+}
+
+.registreerbody {
+    background-color: rgba(19, 26, 32, 0.70);
+    height: 100vh;
+}
+
+.input {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+.aanmeldlink {
+    float: right;
+    padding-left: 20px;
+    color: white !important;
+}
+
+.aanmeldlink:hover {
+    color: dodgerblue !important;
+}
+
+.aanmeldlinkcontainer {
+    margin-top: -70px;
+    margin-bottom: 50px;
+}
+
+.width {
+    width: 100%;
+}
+
+.ui-inputfield {
+    margin-bottom: 15px !important;
+    background: transparent !important;
+}
+
+.aanmeldlinkRegistratie {
+    margin-top: -50px;
+    margin-bottom: -30px;
+    color: white;
+    float: right;
 }

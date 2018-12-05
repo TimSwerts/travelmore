@@ -4,58 +4,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <title>Travel More!</title>
-    <link rel="stylesheet" href="./resources/css/skeleton.css"/>
-    <link rel="stylesheet" href="./resources/css/style.css"/>
 </h:head>
-<h:body class="bg-image">
-    <h:outputLabel styleClass="username" rendered="#{persoonController.isAangemeld()}"
-                   value="#{persoonController.getIngelogdePersoon().email}"/>
-    <div class="row navbar-row">
-        <h:form>
-            <ul class="navbar">
-                <li><h:commandButton styleClass="btn btn-login" rendered="#{persoonController.isAangemeld()}"
-                                     action="#{persoonController.logout()}" value="Afmelden"/></li>
-                <li><h:button value="Login" outcome="login.xhtml" rendered="#{!persoonController.isAangemeld()}"
-                              class="btn btn-login"/></li>
-                <li><h:commandButton value="Reizen beheren" styleClass="btn-main" action="#{reisController.testAdmin()}" rendered="#{persoonController.isAdmin()}"></h:commandButton></li>
-                <li><h:commandButton value="Steden beheren" styleClass="btn-main" action="stadbeheer" rendered="#{persoonController.isAdmin()}"></h:commandButton></li>
+<h:body>
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="header">
+            <ui:include src="/templates/defHeader.xhtml"/>
+        </ui:define>
 
-            </ul>
-        </h:form>
-    </div>
-    <div class="container">
-        <h:form>
-            <div class="row search-row">
-                <div class="six columns">
-                    <h:selectOneMenu value="#{reisController.vertrekLandID}" class="u-full-width" id="startLocation"
-                                     label="Van:"
-                                     placeholder="Start location" required="true"
-                                     requiredMessage="Selecteer een vertrekland.">
-                        <f:selectItem itemLabel="Selecteer startlocatie" noSelectionOption="true"/>
-                        <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}"
-                                       itemLabel="#{land.naam}"/>
-                    </h:selectOneMenu>
-                </div>
-                <div class="six columns">
-                    <h:selectOneMenu value="#{reisController.bestemmingsLandID}" class="u-full-width" id="endLocation"
-                                     requiredMessage="Selecteer een bestemming." required="true" label="Naar:">
-                        <f:selectItem itemLabel="Selecteer bestemming" noSelectionOption="true"/>
-                        <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}"
-                                       itemLabel="#{land.naam}"/>
-                    </h:selectOneMenu>
-                </div>
-                <div class="six columns no-margin-left"><h:message for="startLocation"/></div>
-                <div class="six columns"><h:message for="endLocation"/></div>
-                <div class="twelve columns">
-                    <h:commandButton value="Zoeken" class="btn-main btn-search"
-                                     action="#{reisController.overzichtReizen}"/>
-                </div>
+        <ui:define name="title">Travel More!</ui:define>
+        <ui:define name="content">
+            <h:form>
+                <div class="row search-row">
+                    <div class="six columns">
+                        <h:selectOneMenu value="#{reisController.vertrekLandID}" class="u-full-width"
+                                         id="startLocation"
+                                         label="Van:"
+                                         placeholder="Start location" required="true"
+                                         requiredMessage="Selecteer een vertrekland.">
+                            <f:selectItem itemLabel="Selecteer startlocatie" noSelectionOption="true"/>
+                            <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}"
+                                           itemLabel="#{land.naam}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="six columns">
+                        <h:selectOneMenu value="#{reisController.bestemmingsLandID}" class="u-full-width"
+                                         id="endLocation"
+                                         requiredMessage="Selecteer een bestemming." required="true" label="Naar:">
+                            <f:selectItem itemLabel="Selecteer bestemming" noSelectionOption="true"/>
+                            <f:selectItems value="#{landController.landen}" var="land" itemValue="#{land.id}"
+                                           itemLabel="#{land.naam}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="six columns no-margin-left"><h:message for="startLocation"/></div>
+                    <div class="six columns"><h:message for="endLocation"/></div>
+                    <div class="twelve columns">
+                        <h:commandButton value="Zoeken" class="btn-main btn-search"
+                                         action="#{reisController.overzichtReizen}"/>
+                    </div>
 
-            </div>
-        </h:form>
-    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
 </h:body>
 </html>

@@ -11,119 +11,118 @@
     <title>Travel More!</title>
     <link rel="stylesheet" href="resources/css/skeleton.css"/>
     <link rel="stylesheet" href="resources/css/style.css"/>
-    <h:outputStylesheet>
-
-    </h:outputStylesheet>
 </h:head>
-<h:body>
+<h:body class="registreerbody">
 
-    <f:view>
-        <div class="container">
-
-            <h:form>
-                <div class="row search-row">
-
-                    <div class="six columns">
-                        <h:outputLabel value="Voornaam"/>
-                        <h:inputText
-                                value="#{gebruikerController.newGebruiker.voornaam}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                label="voornaam"
-                                id="voornaam"
-                                styleClass="u-full-width"
-                        />
-                        <h:message for="voornaam" styleClass="error"/>
-                    </div>
-                    <div class="six columns">
-                        <h:outputLabel value="Achternaam"/>
-                        <h:inputText
-                                value="#{gebruikerController.newGebruiker.achternaam}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                id="achternaam"
-                                styleClass="u-full-width"
-                        />
-                        <h:message for="achternaam" styleClass="error"/>
-                    </div>
-
-                    <div class="twelve columns">
-                        <h:outputLabel value="Email"/>
-                        <h:inputText
-                                value="#{gebruikerController.newGebruiker.email}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                id="email"
-                                styleClass="u-full-width"
-                        />
-                        <h:message for="email" styleClass="error"/>
-                    </div>
-                    <div class="twelve columns">
-
-                        <h:outputLabel value="Geboortedatum"/>
-                        <p:calendar
-                                value="#{gebruikerController.newGebruiker.geboortedatum}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                id="geboortedatum"
-                        />
-                        <h:message for="email" styleClass="error"/>
-
-
-                    </div>
-                    <div class="twelve columns">
-
-
-                        <h:outputLabel value="Rijksregisternummer"/>
-                        <h:inputText
-                                value="#{gebruikerController.newGebruiker.rijksregisternummer}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                id="rijksregisternummer"
-                                styleClass="u-full-width"
-
-
-                        />
-                        <h:message for="rijksregisternummer" styleClass="error"/>
-
-                    </div>
-                    <div class="twelve columns">
-                        <h:outputLabel value="Wachtwoord"/>
-                        <h:inputSecret
-                                value="#{gebruikerController.newGebruiker.wachtwoord}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                id="wachtwoord"
-                                styleClass="u-full-width"
-                        />
-                        <h:message for="wachtwoord" styleClass="error"/>
-                    </div>
-                    <div class="twelve columns">
-                        <h:outputLabel value="Bevestig wachtwoord"/>
-                        <h:inputSecret
-                                value="#{controleWachtwoord}"
-                                required="true"
-                                requiredMessage="Verplicht!"
-                                id="bevestigWachtwoord"
-                                styleClass="u-full-width"
-                        />
-                        <h:message for="bevestigWachtwoord" styleClass="error"/>
-                    </div>
-                    <div class="twelve columns">
-                        <h:commandButton styleClass="btn" value="Registreer"
-                                         action="#{gebruikerController.registreer(controleWachtwoord)}"/>
-                    </div>
+    <div class="container">
+        <div class="containerRegistreer">
+            <div class="row">
+                <h2 class="registreertitel">Log in</h2>
+                <div class="registreercontainer">
+                    <h:form>
+                        <div class="row">
+                            <div class="six columns">
+                                <h:outputLabel value="Voornaam"/>
+                                <h:inputText
+                                        value="#{gebruikerController.newGebruiker.voornaam}"
+                                        required="true"
+                                        requiredMessage="Verplicht!"
+                                        label="voornaam"
+                                        id="voornaam"
+                                        styleClass="u-full-width input"
+                                />
+                                <h:message for="voornaam" styleClass="error"/>
+                            </div>
+                            <div class="six columns">
+                                <h:outputLabel value="Achternaam"/>
+                                <h:inputText
+                                        value="#{gebruikerController.newGebruiker.achternaam}"
+                                        required="true"
+                                        requiredMessage="Verplicht!"
+                                        id="achternaam"
+                                        styleClass="u-full-width input"
+                                />
+                                <h:message for="achternaam" styleClass="error"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h:outputLabel value="Email"/>
+                                <h:inputText
+                                        value="#{gebruikerController.newGebruiker.email}"
+                                        required="true"
+                                        requiredMessage="Verplicht!"
+                                        id="email"
+                                        styleClass="u-full-width input"
+                                />
+                                <h:message for="email" styleClass="error"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns input width">
+                                <h:outputLabel value="Geboortedatum"/>
+                                <p:calendar
+                                        value="#{gebruikerController.newGebruiker.geboortedatum}"
+                                        required="true"
+                                        requiredMessage="Verplicht!"
+                                        id="geboortedatum"
+                                />
+                                <h:message for="email" styleClass="error"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h:outputLabel value="Rijksregisternummer"/>
+                                <h:inputText
+                                        value="#{gebruikerController.newGebruiker.rijksregisternummer}"
+                                        required="true"
+                                        requiredMessage="Verplicht!"
+                                        id="rijksregisternummer"
+                                        styleClass="u-full-width input"
+                                />
+                                <h:message for="rijksregisternummer" styleClass="error"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h:outputLabel value="Wachtwoord"/>
+                                <h:inputSecret
+                                        value="#{gebruikerController.newGebruiker.wachtwoord}"
+                                        required="true"
+                                        requiredMessage="Verplicht!"
+                                        id="wachtwoord"
+                                        styleClass="u-full-width input"
+                                />
+                                <h:message for="wachtwoord" styleClass="error"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h:outputLabel value="Bevestig wachtwoord"/>
+                                <h:inputSecret
+                                        value="#{controleWachtwoord}"
+                                        required="true"
+                                        requiredMessage="Verplicht!"
+                                        id="bevestigWachtwoord"
+                                        styleClass="u-full-width input"
+                                />
+                                <h:message for="bevestigWachtwoord" styleClass="error"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h:commandButton styleClass="btn-aanmelden" value="Registreer"
+                                                 action="#{gebruikerController.registreer(controleWachtwoord)}"/>
+                            </div>
+                        </div>
+                    </h:form>
+                    <h:form styleClass="aanmeldlinkcontainer">
+                        <h:commandLink styleClass="aanmeldlinkRegistratie" value="Terug" action="login"/>
+                    </h:form>
                 </div>
-            </h:form>
-
+            </div>
         </div>
-
-
-        <h:form>
-
-
-        </h:form>
-    </f:view>
+    </div>
 
 
     <h:outputScript>

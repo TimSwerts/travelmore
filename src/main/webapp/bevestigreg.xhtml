@@ -16,16 +16,10 @@
             <div class="twelve columns" style="text-align: center">
                 <h:form>
                     <h:outputLabel style="font-size: 25px;" value="#{gebruikerController.bevestigRegistratie(param['id'], param['code'])}" binding="#{code}" />
-                    <h:commandLink value="Aanmelden" action="login"/>
+                    <h:commandLink value="Aanmelden" styleClass="btn btn-login" action="login"/>
                 </h:form>
             </div>
         </div>
-
     </div>
-
-
-
-
-
 </h:body>
 </html>
