@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class EmailUtil {
 
-    public void sendEmail(String receiver, String body){
+    public void sendEmail(String receiver, String body, String subject){
         //setup
         final String host = "smtp.gmail.com";
         final String from = "javaproject024@gmail.com\n";
@@ -35,7 +35,7 @@ public class EmailUtil {
             message.setFrom(new InternetAddress(from));
             message.setRecipients(
                     Message.RecipientType.TO, InternetAddress.parse(receiver));
-            message.setSubject("Bevestig uw registratie");
+            message.setSubject(subject);
 
 
             String msg = body;

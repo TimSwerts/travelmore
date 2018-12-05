@@ -63,7 +63,7 @@ public class Boeking {
 
         String mailText = "Gefeliceteerd met u boeking naar" + reis.getBestemming().getNaam() + ". " + "U heeft " + prijs + "betaald.";
 
-        util.sendEmail(gebruiker.getEmail(), mailText);
+        util.sendEmail(gebruiker.getEmail(), mailText, "Proficiat met uw boeking");
     }
 
     public int getId() {
