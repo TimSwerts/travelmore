@@ -9,6 +9,7 @@ import be.thomasmore.travelmore.service.BoekingService;
 import be.thomasmore.travelmore.service.ReisService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
@@ -18,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class BoekingController implements Serializable {
 
     private Boeking boeking = new Boeking();
@@ -41,7 +42,7 @@ public class BoekingController implements Serializable {
         return this.boekingService.findBoekingById(id);
     }
 
-    public void addBoeking(Reis reis, double prijs) {
+    public String boekingOverzicht(Reis reis, double prijs) {
         Date datum = new Date();
         this.newBoeking.setPrijs(prijs*(this.newBoeking.getAantalKinderen()+this.newBoeking.getAantalVolwassenen()));
         this.newBoeking.setDatum(datum);
@@ -50,9 +51,14 @@ public class BoekingController implements Serializable {
         this.newBoeking.setGebruiker((Gebruiker) persoonController.getIngelogdePersoon());
         this.newBoeking.setBetalingType(this.betalingTypeService.findBetalingTypeById(idType));
 //        this.newBoeking.setBetalingType(type);
+      return "boekingOverzicht";
+    }
+
+    public String addBoeking (){
         this.boekingService.addBoeking(newBoeking);
         newBoeking.sendMail();
 
+        return "bevestigBoeking";
     }
 
     public List<Boeking> getBoekingen() {
