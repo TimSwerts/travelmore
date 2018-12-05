@@ -10,6 +10,7 @@ import be.thomasmore.travelmore.service.ReisService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
@@ -19,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class BoekingController implements Serializable {
 
     private Boeking boeking = new Boeking();
@@ -54,9 +55,9 @@ public class BoekingController implements Serializable {
       return "boekingOverzicht";
     }
 
-    public String addBoeking (){
-        this.boekingService.addBoeking(newBoeking);
-        newBoeking.sendMail();
+    public String addBoeking (Boeking boeking){
+        this.boekingService.addBoeking(boeking);
+        boeking.sendMail();
 
         return "bevestigBoeking";
     }

@@ -1,5 +1,5 @@
 # Travelmore
-Dit project is een applicatie in opdracht van Realdolmen. Het is een systeem om reizen te kunnen bekijken en boeken. 
+Dit project is een applicatie in opdracht van [Realdolmen](https://www.realdolmen.com/nl). Het is een systeem om reizen te kunnen bekijken en boeken. 
 
 ## Installatie
 
