@@ -59,6 +59,14 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/boeking.xhtml</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/boekingOverzicht.xhtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/bevestigBoeking.xhtml</url-pattern>
+    </filter-mapping>
     <!--Admin -->
     <filter>
         <filter-name>adminFilter</filter-name>
