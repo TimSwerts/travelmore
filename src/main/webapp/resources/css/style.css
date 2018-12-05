@@ -18,7 +18,7 @@ body {
 }
 
 .search-row {
-    margin-top: 25rem;
+    margin-top: 18rem;
     padding: 3rem;
     background-color: rgba(19, 26, 32, 0.70);
     color: #fff;
@@ -27,17 +27,19 @@ body {
 div.dataTables_wrapper div.dataTables_filter label{
     text-align: right !important;
 }
-td{
-    background-color: rgb(88, 19, 0) !important;
-}
 
+.tabel td{
+    background-color: #565859;
+}
+.filter{
+    margin-bottom: 30px !important;
+}
 .btn-main {
     background-color: transparent;
     color: #fff !important;
     font-weight: bold !important;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 30px;
 }
 
 .btn-search {

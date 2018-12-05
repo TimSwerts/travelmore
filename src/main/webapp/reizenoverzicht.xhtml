@@ -58,11 +58,11 @@
 
                     <b:row>
                         <b:column span="12">
-                            <b:commandButton value="Filter" class="btn-main filter" action="#{reisController.filter}"/>
+                            <b:commandButton  value="Filter" styleClass="btn-main filter" action="#{reisController.filter}"/>
                         </b:column>
                     </b:row>
 
-                    <b:dataTable border="collapse" value="#{reisController.reizen}" var="reis">
+                    <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
                         <f:facet name="header">
                             <tr>
                                 <th>Vertrek</th>
