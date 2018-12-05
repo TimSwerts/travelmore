@@ -45,8 +45,9 @@
                         <h:commandButton value="Aanmelden" styleClass="btn-aanmelden"
                                          action="#{persoonController.login}"/>
                     </h:form>
-                    <h:form>
+                    <h:form styleClass="aanmeldlinkcontainer">
                         <h:commandLink styleClass="aanmeldlink" value="Nog geen account?" action="registreer"/>
+                        <h:commandLink styleClass="aanmeldlink" value="Terug" action="index"/>
                     </h:form>
 
                     <h:outputLabel style="color:white;" value="#{persoonController.message}"/>

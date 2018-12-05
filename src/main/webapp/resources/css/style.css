@@ -4,7 +4,13 @@ body {
 }
 
 .username{
-    color: rgba(255,255,255,1) !important;
+    position: relative;
+    left: 20px;
+    border: none !important;
+    color: white !important;
+    height: 22px !important;
+    padding-right: 20px;
+    top: 10px;
 }
 
 .bg-image {
@@ -52,6 +58,15 @@ td{
     border: none !important;
 }
 
+.btn-admin {
+    position: relative;
+    left: 20px;
+    border: none !important;
+    color: white !important;
+    height: 22px !important;
+    top: 10px;
+}
+
 .navbar-line {
     border-left: white 1px solid !important;
     border-radius: 0 !important;
@@ -69,6 +84,7 @@ td{
 
 .navbar {
     list-style-type: none;
+    margin-bottom: 0 !important;
 }
 
 .navbar li {
@@ -151,12 +167,17 @@ td{
 
 .aanmeldlink {
     float: right;
-    margin-top: -50px;
+    padding-left: 20px;
     color: white !important;
 }
 
 .aanmeldlink:hover {
     color: dodgerblue !important;
+}
+
+.aanmeldlinkcontainer {
+    margin-top: -70px;
+    margin-bottom: 50px;
 }
 
 .width {
@@ -166,9 +187,5 @@ td{
 .ui-inputfield {
     margin-bottom: 15px !important;
     background: transparent !important;
-}
-
-form {
-    margin-bottom: 0 !important;
 }
 
