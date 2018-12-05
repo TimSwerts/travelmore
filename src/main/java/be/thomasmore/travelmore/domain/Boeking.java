@@ -1,5 +1,7 @@
 package be.thomasmore.travelmore.domain;
 
+import be.thomasmore.travelmore.util.EmailUtil;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,9 +21,6 @@ public class Boeking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "boekingsnummer")
-    private String boekingsnummer;
 
     @Column(name = "datum")
     private Date datum;
@@ -50,7 +49,7 @@ public class Boeking {
     @Column(name = "eindDatum")
     private Date eindDatum;
 
-    @OneToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne
     private BetalingType betalingType;
 
     @ManyToOne
@@ -59,20 +58,20 @@ public class Boeking {
     @ManyToOne
     private Gebruiker gebruiker;
 
+    public void sendMail(){
+        EmailUtil util = new EmailUtil();
+
+        String mailText = "Gefeliceteerd met u boeking naar" + reis.getBestemming().getNaam() + ". " + "U heeft " + prijs + "betaald.";
+
+        util.sendEmail(gebruiker.getEmail(), mailText);
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getBoekingsnummer() {
-        return boekingsnummer;
-    }
-
-    public void setBoekingsnummer(String boekingsnummer) {
-        this.boekingsnummer = boekingsnummer;
     }
 
     public Date getDatum() {

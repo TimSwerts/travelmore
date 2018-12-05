@@ -25,7 +25,7 @@ public class BetalingType {
     private String naam;
 
     @OneToMany(mappedBy = "id")
-    private List<Betaling> betalingen = new ArrayList<>();
+    private List<Boeking> boekingen = new ArrayList<>();
 
     public BetalingType() {
     }
@@ -46,11 +46,11 @@ public class BetalingType {
         this.naam = naam;
     }
 
-    public List<Betaling> getBetalingen() {
-        return betalingen;
+    public List<Boeking> getBoekingen() {
+        return boekingen;
     }
 
-    public void setBetalingen(List<Betaling> betalingen) {
-        this.betalingen = betalingen;
+    public void setBoekingen(List<Boeking> boekingen) {
+        this.boekingen = boekingen;
     }
 }

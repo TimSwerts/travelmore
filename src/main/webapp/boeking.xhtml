@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      >
 <h:head>
     <title>Travel More!</title>
     <link rel="stylesheet" href="./resources/css/skeleton.css"/>
@@ -122,10 +123,10 @@
             <div class="row">
                 <div class="six columns">
                     <h:outputLabel for="Betaalmiddel" value="Betaalmiddel: "/>
-                    <h:selectOneMenu value="#{boekingController.newBoeking.betalingType}" id="Betaalmiddel"
-                                     placeholder="Betaalmiddel">
+                    <h:selectOneMenu value="#{boekingController.idType}" id="Betaalmiddel"
+                                     placeholder="Betaalmiddel" >
                         <f:selectItem itemLabel="Betaalmiddel" noSelectionOption="true"/>
-                        <f:selectItems value="#{betalingTypeController.betalingTypes}" var="type" itemValue="#{type}"
+                        <f:selectItems value="#{betalingTypeController.betalingTypes}" var="type" itemValue="#{type.id}"
                                        itemLabel="#{type.naam}"/>
                     </h:selectOneMenu>
                 </div>
