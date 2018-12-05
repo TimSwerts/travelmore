@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Travel More!</title>
+    <link rel="stylesheet" href="./resources/css/skeleton.css"/>
+    <link rel="stylesheet" href="./resources/css/style.css"/>
+
+
+</h:head>
+<h:body class="bg-image">
+    <div class="container">
+
+        <h:form>
+            <div class="search-row">
+                <h1>Boeking overzicht</h1>
+                <div class="row">
+                    <div class="six columns">
+
+                        <h:outputLabel for="transport" value="Transportmiddel: "/>
+                        <h:outputText id="transport" value="#{boekingController.newBoeking.reis.transportmiddel.naam}"/>
+
+                    </div>
+                    <div class="six columns">
+
+                        <h:outputLabel for="periode" value="Periode: "/>
+                        <h:outputText id="periode" value="#{boekingController.newBoeking.reis.periode.naam}"/>
+
+                    </div></div>
+                <div class="row">
+                    <div class="six columns">
+
+                        <h:outputLabel for="vertrek" value="Vertreklocatie: "/>
+                        <h:outputText id="vertrek" value="#{boekingController.newBoeking.reis.vertreklocatie.naam} (#{boekingController.newBoeking.reis.vertreklocatie.land.naam})"/>
+
+                    </div>
+                    <div class="six columns">
+
+                        <h:outputLabel for="bestemming" value="Bestemming: "/>
+                        <h:outputText id="bestemming" value="#{boekingController.newBoeking.reis.bestemming.naam} (#{boekingController.newBoeking.reis.bestemming.land.naam})"/>
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="six columns">
+                        <h:outputLabel for="beginDatum" value="Begindatum: "/>
+                        <h:outputText id="beginDatum" value="#{boekingController.newBoeking.beginDatum}"/>
+                    </div>
+                    <div class="six columns">
+                        <h:outputLabel for="eindDatum" value="Einddatum: "/>
+                        <h:outputText id="eindDatum" value="#{boekingController.newBoeking.eindDatum}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <h:outputLabel for="kinderen" value="Aantal kinderen: "/>
+                        <h:outputText id="kinderen" value="#{boekingController.newBoeking.aantalKinderen}"/>
+                    </div>
+                    <div class="six columns">
+                        <h:outputLabel for="volwassenen" value="Aantal volwassenen: "/>
+                        <h:outputText id="volwassenen" value="#{boekingController.newBoeking.aantalVolwassenen}"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="six columns">
+                        <h:outputLabel for="bagage" value="Aantal stuks bagage: "/>
+                        <h:outputText id="bagage" value="#{boekingController.newBoeking.stuksBagage}"/>
+                    </div>
+                    <div class="six columns">
+                        <h:outputLabel for="verzekering" value="Verzekering:"/>
+                        <h:outputText id="verzekering" value="Heeft verzekering gekozen." rendered="#{boekingController.newBoeking.verzekering}"/>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <h:outputLabel for="typeBetaling" value="Betalingsmiddel"/>
+                        <h:outputText  id="typeBetaling" value="#{boekingController.newBoeking.betalingType.naam}"/>
+
+                    </div>
+                    <div class="six columns">
+
+                        <h:outputLabel for="prijs" value="Totale prijs: "/>
+                        <h:outputText id="prijs" value="€ #{boekingController.newBoeking.prijs}"/>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <h:commandButton value="Boeken" action="#{boekingController.addBoeking()}"/>
+                </div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>
