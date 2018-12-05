@@ -62,7 +62,7 @@
                         </b:column>
                     </b:row>
 
-                    <b:dataTable border="collapse" value="#{reisController.reizen}" var="reis">
+                    <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
                         <f:facet name="header">
                             <tr>
                                 <th>Vertrek</th>
@@ -82,8 +82,8 @@
                         <b:dataTableColumn value="#{reis.periode.naam}"/>
                         <b:dataTableColumn value="#{reis.prijs}"/>
                         <b:dataTableColumn value="#{reis.aantal_plaatsen}"/>
-                        <b:dataTableColumn><b:button value="Boek" icon="shopping-cart" size="xs"
-                                                     outcome="boeken.xhtml"/></b:dataTableColumn>
+                        <b:dataTableColumn><h:form><h:commandButton value="Boek" icon="shopping-cart" size="xs"
+                                                                    action="#{reisController.boekReis(reis)}"/></h:form></b:dataTableColumn>
                     </b:dataTable>
                 </div>
             </h:form>

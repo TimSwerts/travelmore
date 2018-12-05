@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+<h:head>
+    <title>Travel More!</title>
+    <link rel="stylesheet" href="./resources/css/skeleton.css"/>
+    <link rel="stylesheet" href="./resources/css/style.css"/>
+
+
+</h:head>
+
+<h:body class="bg-image">
+    <div class="container">
+
+        <h:form>
+            <div class="search-row">
+                <h1>Reis naar #{reisController.reis.bestemming.naam}</h1>
+                <h:inputHidden id="gebruiker" value="#{persoonController.ingelogdePersoon.id}"/>
+            <div class="row">
+                <div class="six columns">
+
+                    <h:outputLabel for="transport" value="Transportmiddel: "/>
+                    <h:outputText id="transport" value="#{reisController.reis.transportmiddel.naam}"/>
+
+                </div>
+                <div class="six columns">
+
+                    <h:outputLabel for="periode" value="Periode: "/>
+                    <h:outputText id="periode" value="#{reisController.reis.periode.naam}"/>
+
+                </div></div>
+                <div class="row">
+                    <div class="six columns">
+
+                        <h:outputLabel for="vertrek" value="Vertreklocatie: "/>
+                        <h:outputText id="vertrek" value="#{reisController.reis.vertreklocatie.naam} (#{reisController.reis.vertreklocatie.land.naam})"/>
+
+                    </div>
+                    <div class="six columns">
+
+                    <h:outputLabel for="bestemming" value="Bestemming: "/>
+                    <h:outputText id="bestemming" value="#{reisController.reis.bestemming.naam} (#{reisController.reis.bestemming.land.naam})"/>
+
+                </div>
+                </div>
+                <div class="row">
+
+                    <div class="six columns">
+                        <h:outputLabel value="Begindatum: "/>
+                        <p:calendar
+                                value="#{boekingController.newBoeking.beginDatum}"
+                                required="true"
+                                requiredMessage="Verplicht!"
+                                label="BeginDatum"
+                                id="BeginDatum"
+                                pattern="dd/MM/yyyy"
+                                styleClass=""
+                        />
+                        <h:message for="BeginDatum" styleClass="error"/>
+                    </div>
+                    <div class="six columns">
+                        <h:outputLabel value="Einddatum: "/>
+                        <p:calendar
+                                value="#{boekingController.newBoeking.eindDatum}"
+                                required="true"
+                                requiredMessage="Verplicht!"
+                                label="EindDatum"
+                                id="EindDatum"
+                                pattern="dd/MM/yyyy"
+                                styleClass=""
+                        />
+                        <h:message for="EindDatum" styleClass="error"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <h:outputLabel value="Aantal kinderen: "/>
+                        <p:spinner
+                                value="#{boekingController.newBoeking.aantalKinderen}"
+                                required="true"
+                                requiredMessage="Verplicht!"
+                                min="0"
+                                label="Kinderen"
+                                id="Kinderen"
+                                styleClass=""
+                        />
+                        <h:message for="Kinderen" styleClass="error"/>
+                    </div>
+                    <div class="six columns">
+                        <h:outputLabel value="Aantal volwassenen: "/>
+                        <p:spinner
+
+                                value="#{boekingController.newBoeking.aantalVolwassenen}"
+                                required="true"
+                                requiredMessage="Verplicht!"
+                                min="0"
+                                label="Volwassenen"
+                                id="Volwassenen"
+                                styleClass=""
+                        />
+                        <h:message for="Volwassenen" styleClass="error"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="six columns">
+                        <h:outputLabel for="bagage" value="Aantal stuks bagage: "/>
+                        <p:spinner id="bagage" styleClass="spinner" value="#{boekingController.newBoeking.stuksBagage}"
+                                   min="0"/>
+                    </div>
+                    <div class="six columns">
+                        <h:outputText value="Verzekering toevoegen: "/>
+                        <p:selectBooleanCheckbox value="#{boekingController.newBoeking.verzekering}"/>
+                    </div>
+
+                </div>
+            <div class="row">
+                <div class="six columns">
+                    <h:outputLabel for="Betaalmiddel" value="Betaalmiddel: "/>
+                    <h:selectOneMenu value="#{boekingController.idType}" id="Betaalmiddel"
+                                     placeholder="Betaalmiddel" >
+                        <f:selectItem itemLabel="Betaalmiddel" noSelectionOption="true"/>
+                        <f:selectItems value="#{betalingTypeController.betalingTypes}" var="type" itemValue="#{type.id}"
+                                       itemLabel="#{type.naam}"/>
+                    </h:selectOneMenu>
+                </div>
+                <div class="six columns">
+
+                    <h:outputLabel for="prijs" value="Prijs per persoon: "/>
+                    <h:outputText id="prijs" value="€ #{reisController.reis.prijs}"/>
+
+                </div>
+            </div>
+                <div class="row">
+                    <h:commandButton value="Boeken" action="#{boekingController.boekingOverzicht(reisController.reis, reisController.reis.prijs)}"/>
+                </div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

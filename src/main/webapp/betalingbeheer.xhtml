@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Travel More!</title>
+    <link rel="stylesheet" href="resources/css/skeleton.css"/>
+</h:head>
+<f:view>
+    <h:dataTable value="#{betalingController.betalingen}" var="betaling">
+        <h:column>#{betaling.id}</h:column>
+        <h:column>#{betaling.bedrag}</h:column>
+        <h:column>#{betaling.betalingType.naam}</h:column>
+        <h:column>#{betaling.datum}</h:column>
+    </h:dataTable>
+    <hr/>
+    <h:form>
+        <div class="row search-row">
+            <h:outputText value="#{betalingController.datum}"/>
+            <div class="six columns">
+                <h:outputLabel value="Prijs: "/>
+                <h:inputText
+                        value="#{betalingController.newBetaling.bedrag}"
+                        required="true"
+                        requiredMessage="Verplicht!"
+                        label="Prijs"
+                        id="Prijs"
+                        styleClass="u-full-width"
+                />
+                <h:message for="Prijs" styleClass="error"/>
+            </div>
+            <div class="six columns">
+            <h:outputLabel for="Betaalmiddel" value="Betaalmiddel: "/>
+                <h:selectOneMenu value="#{betalingController.newBetaling}" class="u-full-width" id="Betaalmiddel"
+                                 placeholder="Betaalmiddel">
+                    <f:selectItem itemLabel="Betaalmiddel" noSelectionOption="true"/>
+                    <f:selectItems value="#{betalingTypeController.betalingTypes}" var="type" itemValue="#{type.id}"
+                                   itemLabel="#{type.naam}"/>
+                </h:selectOneMenu>
+            </div>
+
+        </div>
+    </h:form>
+    <h:outputText value="#{betalingController.newBetaling.datum}"/>
+</f:view>
+</html>

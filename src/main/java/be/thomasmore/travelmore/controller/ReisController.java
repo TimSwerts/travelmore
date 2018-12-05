@@ -16,7 +16,7 @@ import java.util.List;
 @ManagedBean
 @SessionScoped
 public class ReisController implements Serializable {
-    private Reis reis = new Reis();
+    public Reis reis = new Reis();
     private List<Reis> reizen;
 
     private int bestemmingsLandID;
@@ -81,6 +81,10 @@ public class ReisController implements Serializable {
         reizen = this.reisService.findAll();
     }
 
+    public Reis getById(int reisId){
+        Reis reis = reisService.findReisById(reisId);
+        return reis;}
+
     public String filter() {
         String query = String.format("SELECT r from Reis r where r.bestemming.land.id = (SELECT s.land.id from Stad s where s.land.id = %s) AND r.vertreklocatie.land.id = (SELECT s.land.id from Stad s where s.land.id = %s ) and ",bestemmingsLandID, vertrekLandID);
 
@@ -117,6 +121,12 @@ public class ReisController implements Serializable {
         prijs = 0;
         periodeID = 0;
         aantal_plaatsen = 0;
+    }
+
+    public String boekReis(Reis reis){
+        this.reis = reis;
+
+        return "boeking";
     }
 
     public List<Reis> getReizen() {
@@ -197,5 +207,13 @@ public class ReisController implements Serializable {
 
     public void setAantal_plaatsen(int aantal_plaatsen) {
         this.aantal_plaatsen = aantal_plaatsen;
+    }
+
+    public Reis getReis() {
+        return reis;
+    }
+
+    public void setReis(Reis reis) {
+        this.reis = reis;
     }
 }

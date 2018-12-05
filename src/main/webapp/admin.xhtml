@@ -13,6 +13,34 @@
         <ui:define name="header">
             <ui:include src="/templates/defHeader.xhtml"/>
         </ui:define>
+        <div class="row search-row">    
+            <button class="btn-main" data-target="#addModal" data-toggle="modal">TOEVOEGEN</button>
+            <b:form id="form">
+                <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
+                    <f:facet name="header">
+                        <tr>
+                            <th>Vertrek</th>
+                            <th>Bestemming</th>
+                            <th>Omschrijving</th>
+                            <th>Transportmiddel</th>
+                            <th>Periode</th>
+                            <th>Prijs</th>
+                            <th>Aantal plaatsen</th>
+                            <th></th>
+                        </tr>
+                    </f:facet>
+                    <b:dataTableColumn value="#{reis.vertreklocatie.naam}"/>
+                    <b:dataTableColumn value="#{reis.bestemming.naam}"/>
+                    <b:dataTableColumn value="#{reis.beschrijving}"/>
+                    <b:dataTableColumn value="#{reis.transportmiddel.naam}"/>
+                    <b:dataTableColumn value="#{reis.periode.naam}"/>
+                    <b:dataTableColumn value="#{reis.prijs}"/>
+                    <b:dataTableColumn value="#{reis.aantal_plaatsen}"/>
+                    <b:dataTableColumn><b:commandButton icon="trash"
+                                                        action="#{reisController.deleteReis(reis.id)}"/></b:dataTableColumn>
+                </b:dataTable>
+            </b:form>
+        </div>
 
         <ui:define name="title">Travel More!</ui:define>
         <ui:define name="content">
