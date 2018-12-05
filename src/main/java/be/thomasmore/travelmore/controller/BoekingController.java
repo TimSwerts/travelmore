@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Boeking;
+import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.BoekingService;
 import be.thomasmore.travelmore.service.ReisService;
 
@@ -19,8 +20,8 @@ public class BoekingController implements Serializable {
 
     private Boeking boeking = new Boeking();
     public Boeking newBoeking = new Boeking();
+    public Reis reis;
     private List<Boeking> boekingen;
-
 
 
     @Inject
@@ -29,20 +30,21 @@ public class BoekingController implements Serializable {
     @Inject
     private ReisController reisController;
 
-    public Boeking getBoeking(int id){
+    public Boeking getBoeking(int id) {
         return this.boekingService.findBoekingById(id);
     }
 
-    public String addBoeking(Boeking nieuw){
-        nieuw.setReis(this.reisController.getById(1));
-
-        System.out.println(nieuw.getAantalKinderen());
-        System.out.println(nieuw.getReis());
-        this.boekingService.addBoeking(nieuw);
-        return "Geslaagd";
+    public void addBoeking(Reis reis, double prijs) {
+        Date datum = new Date();
+        this.newBoeking.setPrijs(prijs*(this.newBoeking.getAantalKinderen()+this.newBoeking.getAantalVolwassenen()));
+        this.newBoeking.setDatum(datum);
+        this.newBoeking.setBetaald(false);
+        this.newBoeking.setReis(reis);
+        this.boekingService.addBoeking(newBoeking);
     }
 
-    public List<Boeking> getBoekingen(){
+
+    public List<Boeking> getBoekingen() {
         boekingen = this.boekingService.findAll();
         return boekingen;
     }
@@ -54,4 +56,5 @@ public class BoekingController implements Serializable {
     public void setNewBoeking(Boeking newBoeking) {
         this.newBoeking = newBoeking;
     }
+
 }

@@ -16,7 +16,7 @@ import java.util.List;
 @ManagedBean
 @SessionScoped
 public class ReisController implements Serializable {
-    private Reis reis = new Reis();
+    public Reis reis = new Reis();
     private List<Reis> reizen;
 
     private int bestemmingsLandID;
@@ -123,6 +123,12 @@ public class ReisController implements Serializable {
         aantal_plaatsen = 0;
     }
 
+    public String boekReis(Reis reis){
+        this.reis = reis;
+
+        return "boeking";
+    }
+
     public List<Reis> getReizen() {
         return reizen;
     }
@@ -201,5 +207,13 @@ public class ReisController implements Serializable {
 
     public void setAantal_plaatsen(int aantal_plaatsen) {
         this.aantal_plaatsen = aantal_plaatsen;
+    }
+
+    public Reis getReis() {
+        return reis;
+    }
+
+    public void setReis(Reis reis) {
+        this.reis = reis;
     }
 }
