@@ -52,6 +52,7 @@ public class BoekingController implements Serializable {
 //        this.newBoeking.setBetalingType(type);
         this.boekingService.addBoeking(newBoeking);
         newBoeking.sendMail();
+
     }
 
     public List<Boeking> getBoekingen() {
