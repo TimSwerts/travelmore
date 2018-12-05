@@ -58,6 +58,7 @@ public class BoekingController implements Serializable {
     public String addBoeking (Boeking boeking){
         this.boekingService.addBoeking(boeking);
         boeking.sendMail();
+        newBoeking = new Boeking();
 
         return "bevestigBoeking";
     }
