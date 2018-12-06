@@ -8,87 +8,85 @@
       xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 </h:head>
-<h:body>
-    <ui:composition template="/templates/layout.xhtml">
-        <ui:define name="header">
-            <ui:include src="/templates/defHeader.xhtml"/>
-        </ui:define>
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="header">
+        <ui:include src="/templates/defHeader.xhtml"/>
+    </ui:define>
 
-        <ui:define name="title">Overzicht reizen</ui:define>
-        <ui:define name="content">
-            <h:form>
-                <div class="row search-row">   
-                    <b:row>
-                        <b:column span="3"><h:outputText value="Transportmiddel:"/>
-                            <b:selectOneMenu value="#{reisController.transportmiddelID}" id="transportType">
-                                <f:selectItem itemLabel="Selecteer:" noSelectionOption="true"/>
-                                <f:selectItems value="#{transportmiddelController.transportmiddelen}"
-                                               var="transportmiddel"
-                                               itemValue="#{transportmiddel.id}"
-                                               itemLabel="#{transportmiddel.naam}"/>
-                            </b:selectOneMenu>
-                        </b:column>
-                        <b:column span="3"><h:outputText value="Max budget:"/>
-                            <b:inputText type="number" name="budget" id="budget"
-                                         converterMessage="Vul een getal in!"
-                                         value="#{reisController.prijs}"
-                                         placeholder="Maximum Budget:">
-                                <f:convertNumber maxFractionDigits="2"/>
-                            </b:inputText>
-                            <h:message for="budget"/>
-                        </b:column>
-                        <b:column span="3"><h:outputText value="Aantal"/>
-                            <b:inputText type="number" name="aantal" id="aantal"
-                                         converterMessage="Vul een getal in!"
-                                         value="#{reisController.aantal_plaatsen}">
-                                <f:convertNumber maxFractionDigits="2"/>
-                            </b:inputText>
-                            <h:message for="aantal"/>
-                        </b:column>
-                        <b:column span="3"><h:outputText value="Periode:"/>
-                            <b:selectOneMenu value="#{reisController.periodeID}" id="periodes">
-                                <f:selectItem itemLabel="Selecteer:" noSelectionOption="true"/>
-                                <f:selectItems value="#{periodeController.periodes}" var="periode"
-                                               itemValue="#{periode.id}"
-                                               itemLabel="#{periode.naam}"/>
-                            </b:selectOneMenu>
-                        </b:column>
-                    </b:row>
+    <ui:define name="title">Overzicht reizen</ui:define>
+    <ui:define name="content">
+        <h:form>
+            <div class="row search-row">   
+                <b:row>
+                    <b:column span="3"><h:outputText value="Transportmiddel:"/>
+                        <b:selectOneMenu value="#{reisController.transportmiddelID}" id="transportType">
+                            <f:selectItem itemLabel="Selecteer:" noSelectionOption="true"/>
+                            <f:selectItems value="#{transportmiddelController.transportmiddelen}"
+                                           var="transportmiddel"
+                                           itemValue="#{transportmiddel.id}"
+                                           itemLabel="#{transportmiddel.naam}"/>
+                        </b:selectOneMenu>
+                    </b:column>
+                    <b:column span="3"><h:outputText value="Max budget:"/>
+                        <b:inputText type="number" name="budget" id="budget"
+                                     converterMessage="Vul een getal in!"
+                                     value="#{reisController.prijs}"
+                                     placeholder="Maximum Budget:">
+                            <f:convertNumber maxFractionDigits="2"/>
+                        </b:inputText>
+                        <h:message for="budget"/>
+                    </b:column>
+                    <b:column span="3"><h:outputText value="Aantal"/>
+                        <b:inputText type="number" name="aantal" id="aantal"
+                                     converterMessage="Vul een getal in!"
+                                     value="#{reisController.aantal_plaatsen}">
+                            <f:convertNumber maxFractionDigits="2"/>
+                        </b:inputText>
+                        <h:message for="aantal"/>
+                    </b:column>
+                    <b:column span="3"><h:outputText value="Periode:"/>
+                        <b:selectOneMenu value="#{reisController.periodeID}" id="periodes">
+                            <f:selectItem itemLabel="Selecteer:" noSelectionOption="true"/>
+                            <f:selectItems value="#{periodeController.periodes}" var="periode"
+                                           itemValue="#{periode.id}"
+                                           itemLabel="#{periode.naam}"/>
+                        </b:selectOneMenu>
+                    </b:column>
+                </b:row>
 
-                    <b:row>
-                        <b:column span="12">
-                            <b:commandButton value="Filter" styleClass="filter"
-                                             action="#{reisController.filter}"/>
-                        </b:column>
-                    </b:row>
+                <b:row>
+                    <b:column span="12">
+                        <b:commandButton value="Filter" styleClass="filter"
+                                         action="#{reisController.filter}"/>
+                    </b:column>
+                </b:row>
 
-                    <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
-                        <f:facet name="header">
-                            <tr>
-                                <th>Vertrek</th>
-                                <th>Bestemming</th>
-                                <th>Omschrijving</th>
-                                <th>Transportmiddel</th>
-                                <th>Periode</th>
-                                <th>Prijs</th>
-                                <th>Aantal plaatsen</th>
-                                <th></th>
-                            </tr>
-                        </f:facet>
-                        <b:dataTableColumn value="#{reis.vertreklocatie.naam}"/>
-                        <b:dataTableColumn value="#{reis.bestemming.naam}"/>
-                        <b:dataTableColumn value="#{reis.beschrijving}"/>
-                        <b:dataTableColumn value="#{reis.transportmiddel.naam}"/>
-                        <b:dataTableColumn value="#{reis.periode.naam}"/>
-                        <b:dataTableColumn value="#{reis.prijs}"/>
-                        <b:dataTableColumn value="#{reis.aantal_plaatsen}"/>
-                        <b:dataTableColumn><h:form><h:commandButton value="Boek" icon="shopping-cart" size="xs"
-                                                                    action="#{reisController.boekReis(reis)}"/></h:form></b:dataTableColumn>
-                    </b:dataTable>
-                </div>
-            </h:form>
-        </ui:define>
-    </ui:composition>
-</h:body>
+                <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
+                    <f:facet name="header">
+                        <tr>
+                            <th>Vertrek</th>
+                            <th>Bestemming</th>
+                            <th>Omschrijving</th>
+                            <th>Transportmiddel</th>
+                            <th>Periode</th>
+                            <th>Prijs</th>
+                            <th>Aantal plaatsen</th>
+                            <th></th>
+                        </tr>
+                    </f:facet>
+                    <b:dataTableColumn value="#{reis.vertreklocatie.naam}"/>
+                    <b:dataTableColumn value="#{reis.bestemming.naam}"/>
+                    <b:dataTableColumn value="#{reis.beschrijving}"/>
+                    <b:dataTableColumn value="#{reis.transportmiddel.naam}"/>
+                    <b:dataTableColumn value="#{reis.periode.naam}"/>
+                    <b:dataTableColumn value="#{reis.prijs}"/>
+                    <b:dataTableColumn value="#{reis.aantal_plaatsen}"/>
+                    <b:dataTableColumn><h:commandButton value="Boek" icon="shopping-cart" styleClass="btn-main"
+                                                        action="#{reisController.boekReis(reis)}"/></b:dataTableColumn>
+                </b:dataTable>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
 </html>
 

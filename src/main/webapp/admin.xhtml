@@ -8,108 +8,106 @@
       xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 </h:head>
-<h:body class="bg-image">
-    <ui:composition template="/templates/layout.xhtml">
-        <ui:define name="header">
-            <ui:include src="/templates/defHeader.xhtml"/>
-        </ui:define>
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="header">
+        <ui:include src="/templates/defHeader.xhtml"/>
+    </ui:define>
 
-        <ui:define name="title">Travel More!</ui:define>
-        <ui:define name="content">
-            <div class="row search-row">    
-                <button class="btn-main" data-target="#addModal" data-toggle="modal">TOEVOEGEN</button>
-                <b:form id="form">
-                    <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
-                        <f:facet name="header">
-                            <tr>
-                                <th>Vertrek</th>
-                                <th>Bestemming</th>
-                                <th>Omschrijving</th>
-                                <th>Transportmiddel</th>
-                                <th>Periode</th>
-                                <th>Prijs</th>
-                                <th>Aantal plaatsen</th>
-                                <th></th>
-                            </tr>
-                        </f:facet>
-                        <b:dataTableColumn value="#{reis.vertreklocatie.naam}"/>
-                        <b:dataTableColumn value="#{reis.bestemming.naam}"/>
-                        <b:dataTableColumn value="#{reis.beschrijving}"/>
-                        <b:dataTableColumn value="#{reis.transportmiddel.naam}"/>
-                        <b:dataTableColumn value="#{reis.periode.naam}"/>
-                        <b:dataTableColumn value="#{reis.prijs}"/>
-                        <b:dataTableColumn value="#{reis.aantal_plaatsen}"/>
-                        <b:dataTableColumn><b:commandButton icon="trash"
-                                                            action="#{reisController.deleteReis(reis.id)}"/></b:dataTableColumn>
-                    </b:dataTable>
-                </b:form>
-            </div>
-            <b:modal id="addModal" title="Reis toevoegen" styleClass="formValidationModalClass" closable="false">
-                <b:form>
-                    <b:selectOneMenu value="#{reisController.vertrekStadID}" class="u-full-width" id="startLocation"
-                                     label="Van: "
-                                     required="true" requiredMessage="Selecteer een vertrekland.">
-                        <f:selectItem itemLabel="Selecteer vertrekland" noSelectionOption="true"/>
-                        <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
-                                       itemLabel="#{stad.naam}"/>
-                    </b:selectOneMenu>
+    <ui:define name="title">Travel More!</ui:define>
+    <ui:define name="content">
+        <div class="row search-row">    
+            <button class="btn-main" data-target="#addModal" data-toggle="modal">TOEVOEGEN</button>
+            <b:form id="form">
+                <b:dataTable styleClass="tabel" border="collapse" value="#{reisController.reizen}" var="reis">
+                    <f:facet name="header">
+                        <tr>
+                            <th>Vertrek</th>
+                            <th>Bestemming</th>
+                            <th>Omschrijving</th>
+                            <th>Transportmiddel</th>
+                            <th>Periode</th>
+                            <th>Prijs</th>
+                            <th>Aantal plaatsen</th>
+                            <th></th>
+                        </tr>
+                    </f:facet>
+                    <b:dataTableColumn value="#{reis.vertreklocatie.naam}"/>
+                    <b:dataTableColumn value="#{reis.bestemming.naam}"/>
+                    <b:dataTableColumn value="#{reis.beschrijving}"/>
+                    <b:dataTableColumn value="#{reis.transportmiddel.naam}"/>
+                    <b:dataTableColumn value="#{reis.periode.naam}"/>
+                    <b:dataTableColumn value="#{reis.prijs}"/>
+                    <b:dataTableColumn value="#{reis.aantal_plaatsen}"/>
+                    <b:dataTableColumn><b:commandButton icon="trash"
+                                                        action="#{reisController.deleteReis(reis.id)}"/></b:dataTableColumn>
+                </b:dataTable>
+            </b:form>
+        </div>
+        <b:modal id="addModal" title="Reis toevoegen" styleClass="formValidationModalClass" closable="false">
+            <b:form>
+                <b:selectOneMenu value="#{reisController.vertrekStadID}" class="u-full-width" id="startLocation"
+                                 label="Van: "
+                                 required="true" requiredMessage="Selecteer een vertrekland.">
+                    <f:selectItem itemLabel="Selecteer vertrekland" noSelectionOption="true"/>
+                    <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
+                                   itemLabel="#{stad.naam}"/>
+                </b:selectOneMenu>
 
-                    <b:selectOneMenu value="#{reisController.bestemmingsStadID}" class="u-full-width" id="endLocation"
-                                     label="Naar:" required="true" requiredMessage="Selecteer een bestemming.">
-                        <f:selectItem itemLabel="Selecteer bestemming" noSelectionOption="true"/>
-                        <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
-                                       itemLabel="#{stad.naam}"/>
-                    </b:selectOneMenu>
+                <b:selectOneMenu value="#{reisController.bestemmingsStadID}" class="u-full-width" id="endLocation"
+                                 label="Naar:" required="true" requiredMessage="Selecteer een bestemming.">
+                    <f:selectItem itemLabel="Selecteer bestemming" noSelectionOption="true"/>
+                    <f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}"
+                                   itemLabel="#{stad.naam}"/>
+                </b:selectOneMenu>
 
-                    <b:selectOneMenu value="#{reisController.transportmiddelID}" class="u-full-width" id="transportType"
-                                     label="Transportmiddel:" required="true"
-                                     requiredMessage="Selecteer een transportmiddel.">
-                        <f:selectItem itemLabel="Selecteer transportmiddel" noSelectionOption="true"/>
-                        <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel"
-                                       itemValue="#{transportmiddel.id}"
-                                       itemLabel="#{transportmiddel.naam}"/>
-                    </b:selectOneMenu>
+                <b:selectOneMenu value="#{reisController.transportmiddelID}" class="u-full-width" id="transportType"
+                                 label="Transportmiddel:" required="true"
+                                 requiredMessage="Selecteer een transportmiddel.">
+                    <f:selectItem itemLabel="Selecteer transportmiddel" noSelectionOption="true"/>
+                    <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel"
+                                   itemValue="#{transportmiddel.id}"
+                                   itemLabel="#{transportmiddel.naam}"/>
+                </b:selectOneMenu>
 
-                    <b:selectOneMenu value="#{reisController.periodeID}" class="u-full-width" id="periode"
-                                     label="Periode:"
-                                     required="true" requiredMessage="Selecteer een periode.">
-                        <f:selectItem itemLabel="Selecteer periode" noSelectionOption="true"/>
-                        <f:selectItems value="#{periodeController.periodes}" var="periode"
-                                       itemValue="#{periode.id}"
-                                       itemLabel="#{periode.naam}"/>
-                    </b:selectOneMenu>
+                <b:selectOneMenu value="#{reisController.periodeID}" class="u-full-width" id="periode"
+                                 label="Periode:"
+                                 required="true" requiredMessage="Selecteer een periode.">
+                    <f:selectItem itemLabel="Selecteer periode" noSelectionOption="true"/>
+                    <f:selectItems value="#{periodeController.periodes}" var="periode"
+                                   itemValue="#{periode.id}"
+                                   itemLabel="#{periode.naam}"/>
+                </b:selectOneMenu>
 
-                    <b:inputText label="Prijs"
-                                 required="true"
-                                 value="#{reisController.prijs}"
-                                 converterMessage="Vul een getal in.">
-                        <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
-                    </b:inputText>
-                    <b:inputText label="Aantal plaatsen"
-                                 required="true"
-                                 value="#{reisController.aantal_plaatsen}"
-                                 converterMessage="Vul een getal in.">
-                        <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
-                    </b:inputText>
+                <b:inputText label="Prijs"
+                             required="true"
+                             value="#{reisController.prijs}"
+                             converterMessage="Vul een getal in.">
+                    <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
+                </b:inputText>
+                <b:inputText label="Aantal plaatsen"
+                             required="true"
+                             value="#{reisController.aantal_plaatsen}"
+                             converterMessage="Vul een getal in.">
+                    <f:convertNumber integerOnly="true" maxFractionDigits="2"/>
+                </b:inputText>
 
-                    <b:inputText
-                            value="#{reisController.beschrijving}"
-                            required="true"
-                            requiredMessage="Vul een beschrijving in."
-                            id="description"
-                            label="Beschrijving:"
-                            styleClass="u-full-width"
-                    />
+                <b:inputText
+                        value="#{reisController.beschrijving}"
+                        required="true"
+                        requiredMessage="Vul een beschrijving in."
+                        id="description"
+                        label="Beschrijving:"
+                        styleClass="u-full-width"
+                />
 
-                    <b:commandButton value="Ok" dismiss="modal" update="@form @(#form)"
-                                     oncomplete="if(!validationFailed) {$('.formValidationModalClass').modal('hide')}"
-                                     actionListener="#{reisController.addReis}"/>
-                    <h:button value="Cancel" dismiss="modal"/>
-                    <b:fetchBeanInfos/>
-                    <b:messages/>
-                </b:form>
-            </b:modal>
-        </ui:define>
-    </ui:composition>
-</h:body>
+                <b:commandButton value="Ok" dismiss="modal" update="@form @(#form)"
+                                 oncomplete="if(!validationFailed) {$('.formValidationModalClass').modal('hide')}"
+                                 actionListener="#{reisController.addReis}"/>
+                <h:button value="Cancel" dismiss="modal"/>
+                <b:fetchBeanInfos/>
+                <b:messages/>
+            </b:form>
+        </b:modal>
+    </ui:define>
+</ui:composition>
 </html>
