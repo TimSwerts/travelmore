@@ -16,8 +16,9 @@
     <ui:define name="content">
         <h:form>
             <div class="row search-row">
-                <div class="six columns">
-                    <h:selectOneMenu value="#{reisController.vertrekLandID}" class="u-full-width"
+                <div class="six columns row">
+                    <h:outputLabel styleClass="two columns indexlabel" for="startLocation" value="Van: "/>
+                    <h:selectOneMenu value="#{reisController.vertrekLandID}" class="ten columns"
                                      id="startLocation"
                                      label="Van:"
                                      placeholder="Start location" required="true"
@@ -27,8 +28,9 @@
                                        itemLabel="#{land.naam}"/>
                     </h:selectOneMenu>
                 </div>
-                <div class="six columns">
-                    <h:selectOneMenu value="#{reisController.bestemmingsLandID}" class="u-full-width"
+                <div class="six columns row">
+                    <h:outputLabel styleClass="two columns indexlabel" for="endLocation" value="Naar: "/>
+                    <h:selectOneMenu value="#{reisController.bestemmingsLandID}" class="ten columns"
                                      id="endLocation"
                                      requiredMessage="Selecteer een bestemming." required="true" label="Naar:">
                         <f:selectItem itemLabel="Selecteer bestemming" noSelectionOption="true"/>

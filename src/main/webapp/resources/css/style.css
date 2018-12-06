@@ -130,13 +130,28 @@ div.dataTables_wrapper div.dataTables_filter label {
 .no-margin-left:after {
     content: '.';
     visibility: hidden;
-
 }
 
 .btn-aanmelden {
     background-color: transparent !important;
     color: white !important;
     border: white solid 2px !important;
+}
+
+.aanmeldlink {
+    float: right;
+    padding-left: 20px;
+    color: white !important;
+    text-decoration: none;
+}
+
+.aanmeldlink:hover {
+    text-decoration: underline;
+}
+
+.aanmeldlinkcontainer {
+    margin-top: -70px;
+    margin-bottom: 50px;
 }
 
 .aanmeldlinkRegistratie {
@@ -146,6 +161,10 @@ div.dataTables_wrapper div.dataTables_filter label {
     float: right;
 }
 
-.ui-input-field {
+.ui-inputfield {
     margin-bottom: 15px !important;
+}
+
+.indexlabel {
+    padding: 7px 0px;
 }
