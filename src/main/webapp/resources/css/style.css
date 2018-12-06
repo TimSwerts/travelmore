@@ -39,6 +39,8 @@ div.dataTables_wrapper div.dataTables_filter label {
 }
 .filter{
     margin-bottom: 30px !important;
+    font-weight: bold;
+    color: white;
 }
 .btn-main {
     background-color: transparent;
