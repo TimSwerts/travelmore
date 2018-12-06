@@ -86,7 +86,7 @@ public class ReisController implements Serializable {
         return reis;}
 
     public String filter() {
-        String query = String.format("SELECT r from Reis r where r.bestemming.land.id = (SELECT s.land.id from Stad s where s.land.id = %s) AND r.vertreklocatie.land.id = (SELECT s.land.id from Stad s where s.land.id = %s ) and ",bestemmingsLandID, vertrekLandID);
+        String query = String.format("SELECT r from Reis r where r.bestemming.land.id in (SELECT s.land.id from Stad s where s.land.id = %s) AND r.vertreklocatie.land.id in (SELECT s.land.id from Stad s where s.land.id = %s ) and ",bestemmingsLandID, vertrekLandID);
 
         if (transportmiddelID != 0) {
             query += " r.transportmiddel.id = " + transportmiddelID + " and ";
