@@ -6,48 +6,50 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      >
+>
 <h:head>
-    <title>Travel More!</title>
-    <link rel="stylesheet" href="./resources/css/skeleton.css"/>
-    <link rel="stylesheet" href="./resources/css/style.css"/>
-
-
 </h:head>
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="header">
+        <ui:include src="/templates/defHeader.xhtml"/>
+    </ui:define>
 
-<h:body class="bg-image">
-    <div class="container">
+    <ui:define name="title">Overzicht reizen</ui:define>
+    <ui:define name="content">
 
         <h:form>
             <div class="search-row">
                 <h1>Reis naar #{reisController.reis.bestemming.naam}</h1>
                 <h:inputHidden id="gebruiker" value="#{persoonController.ingelogdePersoon.id}"/>
-            <div class="row">
-                <div class="six columns">
-
-                    <h:outputLabel for="transport" value="Transportmiddel: "/>
-                    <h:outputText id="transport" value="#{reisController.reis.transportmiddel.naam}"/>
-
-                </div>
-                <div class="six columns">
-
-                    <h:outputLabel for="periode" value="Periode: "/>
-                    <h:outputText id="periode" value="#{reisController.reis.periode.naam}"/>
-
-                </div></div>
                 <div class="row">
                     <div class="six columns">
 
-                        <h:outputLabel for="vertrek" value="Vertreklocatie: "/>
-                        <h:outputText id="vertrek" value="#{reisController.reis.vertreklocatie.naam} (#{reisController.reis.vertreklocatie.land.naam})"/>
+                        <h:outputLabel for="transport" value="Transportmiddel: "/>
+                        <h:outputText id="transport" value="#{reisController.reis.transportmiddel.naam}"/>
 
                     </div>
                     <div class="six columns">
 
-                    <h:outputLabel for="bestemming" value="Bestemming: "/>
-                    <h:outputText id="bestemming" value="#{reisController.reis.bestemming.naam} (#{reisController.reis.bestemming.land.naam})"/>
+                        <h:outputLabel for="periode" value="Periode: "/>
+                        <h:outputText id="periode" value="#{reisController.reis.periode.naam}"/>
 
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="six columns">
+
+                        <h:outputLabel for="vertrek" value="Vertreklocatie: "/>
+                        <h:outputText id="vertrek"
+                                      value="#{reisController.reis.vertreklocatie.naam} (#{reisController.reis.vertreklocatie.land.naam})"/>
+
+                    </div>
+                    <div class="six columns">
+
+                        <h:outputLabel for="bestemming" value="Bestemming: "/>
+                        <h:outputText id="bestemming"
+                                      value="#{reisController.reis.bestemming.naam} (#{reisController.reis.bestemming.land.naam})"/>
+
+                    </div>
                 </div>
                 <div class="row">
 
@@ -120,28 +122,30 @@
                     </div>
 
                 </div>
-            <div class="row">
-                <div class="six columns">
-                    <h:outputLabel for="Betaalmiddel" value="Betaalmiddel: "/>
-                    <h:selectOneMenu value="#{boekingController.idType}" id="Betaalmiddel"
-                                     placeholder="Betaalmiddel" >
-                        <f:selectItem itemLabel="Betaalmiddel" noSelectionOption="true"/>
-                        <f:selectItems value="#{betalingTypeController.betalingTypes}" var="type" itemValue="#{type.id}"
-                                       itemLabel="#{type.naam}"/>
-                    </h:selectOneMenu>
-                </div>
-                <div class="six columns">
-
-                    <h:outputLabel for="prijs" value="Prijs per persoon: "/>
-                    <h:outputText id="prijs" value="€ #{reisController.reis.prijs}"/>
-
-                </div>
-            </div>
                 <div class="row">
-                    <h:commandButton value="Boeken" action="#{boekingController.boekingOverzicht(reisController.reis, reisController.reis.prijs)}"/>
+                    <div class="six columns">
+                        <h:outputLabel for="Betaalmiddel" value="Betaalmiddel: "/>
+                        <h:selectOneMenu value="#{boekingController.idType}" id="Betaalmiddel"
+                                         placeholder="Betaalmiddel">
+                            <f:selectItem itemLabel="Betaalmiddel" noSelectionOption="true"/>
+                            <f:selectItems value="#{betalingTypeController.betalingTypes}" var="type"
+                                           itemValue="#{type.id}"
+                                           itemLabel="#{type.naam}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="six columns">
+
+                        <h:outputLabel for="prijs" value="Prijs per persoon: "/>
+                        <h:outputText id="prijs" value="€ #{reisController.reis.prijs}"/>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <h:commandButton value="Boeken"
+                                     action="#{boekingController.boekingOverzicht(reisController.reis, reisController.reis.prijs)}"/>
                 </div>
             </div>
         </h:form>
-    </div>
-</h:body>
+    </ui:define>
+</ui:composition>
 </html>

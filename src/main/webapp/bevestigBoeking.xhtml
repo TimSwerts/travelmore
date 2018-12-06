@@ -6,21 +6,24 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <link rel="stylesheet" href="./resources/css/skeleton.css"/>
-    <link rel="stylesheet" href="./resources/css/style.css"/>
 </h:head>
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="header">
+        <ui:include src="/templates/defHeader.xhtml"/>
+    </ui:define>
 
-<h:body>
-    <div class="container">
+    <ui:define name="title">Overzicht reizen</ui:define>
+    <ui:define name="content">
         <div class="row search-row">
             <div class="twelve columns" style="text-align: center">
                 <h:form>
-                    <h:outputLabel style="font-size: 25px;" value="Uw boeking is bevestigd! De gegevens zijn verstuurd naar #{persoonController.getIngelogdePersoon().email}" />
+                    <h:outputLabel style="font-size: 25px;"
+                                   value="Uw boeking is bevestigd! De gegevens zijn verstuurd naar #{persoonController.getIngelogdePersoon().email}"/>
                     <h:commandLink value="Terug naar startpagina" action="index"/>
                 </h:form>
             </div>
         </div>
+    </ui:define>
+</ui:composition>
 
-    </div>
-</h:body>
 </html>

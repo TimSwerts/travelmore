@@ -7,18 +7,25 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Travel More!</title>
-    <link rel="stylesheet" href="resources/css/skeleton.css"/>
 </h:head>
-<f:view>
-    <h:dataTable value="#{stadController.steden}" var="stad">
-        <h:column>#{stad.id}</h:column>
-        <h:column>#{stad.naam}</h:column>
-    </h:dataTable>
-    <h:outputText value="#{stadController.getStad(1).naam}"></h:outputText>
-    <!--<h:selectOneMenu>-->
-        <!--<f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}" itemLabel="#{stad.naam}"></f:selectItems>-->
-    <!--</h:selectOneMenu>-->
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="header">
+        <ui:include src="/templates/defHeader.xhtml"/>
+    </ui:define>
 
-</f:view>
+    <ui:define name="title">Overzicht reizen</ui:define>
+    <ui:define name="content">
+        <f:view>
+            <h:dataTable value="#{stadController.steden}" var="stad">
+                <h:column>#{stad.id}</h:column>
+                <h:column>#{stad.naam}</h:column>
+            </h:dataTable>
+            <h:outputText value="#{stadController.getStad(1).naam}"></h:outputText>
+            <!--<h:selectOneMenu>-->
+            <!--<f:selectItems value="#{stadController.steden}" var="stad" itemValue="#{stad.id}" itemLabel="#{stad.naam}"></f:selectItems>-->
+            <!--</h:selectOneMenu>-->
+
+        </f:view>
+    </ui:define>
+</ui:composition>
 </html>

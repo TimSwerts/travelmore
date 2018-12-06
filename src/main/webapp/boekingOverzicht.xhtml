@@ -6,15 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <title>Travel More!</title>
-    <link rel="stylesheet" href="./resources/css/skeleton.css"/>
-    <link rel="stylesheet" href="./resources/css/style.css"/>
-
 
 </h:head>
-<h:body class="bg-image">
-    <div class="container">
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="header">
+        <ui:include src="/templates/defHeader.xhtml"/>
+    </ui:define>
 
+    <ui:define name="title">Overzicht reizen</ui:define>
+    <ui:define name="content">
         <h:form>
             <div class="search-row">
                 <h1>Boeking overzicht</h1>
@@ -30,18 +30,21 @@
                         <h:outputLabel for="periode" value="Periode: "/>
                         <h:outputText id="periode" value="#{boekingController.newBoeking.reis.periode.naam}"/>
 
-                    </div></div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="six columns">
 
                         <h:outputLabel for="vertrek" value="Vertreklocatie: "/>
-                        <h:outputText id="vertrek" value="#{boekingController.newBoeking.reis.vertreklocatie.naam} (#{boekingController.newBoeking.reis.vertreklocatie.land.naam})"/>
+                        <h:outputText id="vertrek"
+                                      value="#{boekingController.newBoeking.reis.vertreklocatie.naam} (#{boekingController.newBoeking.reis.vertreklocatie.land.naam})"/>
 
                     </div>
                     <div class="six columns">
 
                         <h:outputLabel for="bestemming" value="Bestemming: "/>
-                        <h:outputText id="bestemming" value="#{boekingController.newBoeking.reis.bestemming.naam} (#{boekingController.newBoeking.reis.bestemming.land.naam})"/>
+                        <h:outputText id="bestemming"
+                                      value="#{boekingController.newBoeking.reis.bestemming.naam} (#{boekingController.newBoeking.reis.bestemming.land.naam})"/>
 
                     </div>
                 </div>
@@ -74,14 +77,15 @@
                     </div>
                     <div class="six columns">
                         <h:outputLabel for="verzekering" value="Verzekering:"/>
-                        <h:outputText id="verzekering" value="Heeft verzekering gekozen." rendered="#{boekingController.newBoeking.verzekering}"/>
+                        <h:outputText id="verzekering" value="Heeft verzekering gekozen."
+                                      rendered="#{boekingController.newBoeking.verzekering}"/>
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="six columns">
                         <h:outputLabel for="typeBetaling" value="Betalingsmiddel"/>
-                        <h:outputText  id="typeBetaling" value="#{boekingController.newBoeking.betalingType.naam}"/>
+                        <h:outputText id="typeBetaling" value="#{boekingController.newBoeking.betalingType.naam}"/>
 
                     </div>
                     <div class="six columns">
@@ -92,10 +96,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h:commandButton value="Betalen" action="#{boekingController.addBoeking(boekingController.newBoeking)}"/>
+                    <h:commandButton value="Betalen"
+                                     action="#{boekingController.addBoeking(boekingController.newBoeking)}"/>
                 </div>
             </div>
         </h:form>
-    </div>
-</h:body>
+    </ui:define>
+</ui:composition>
 </html>
