@@ -12,22 +12,25 @@
         <h:form>
             <ul class="navbar">
                 <li>
+                    <h:commandLink value="TravelMore" styleClass="btn-home" action="index"/>
+                </li>
+                <li>
                     <h:outputLabel styleClass="username" rendered="#{persoonController.isAangemeld()}"
                                    value="#{persoonController.getIngelogdePersoon().email}"/>
                 </li>
                 <li>
                     <h:commandLink value="Reizen beheren" styleClass="btn-admin navbar-line"
-                                     action="#{reisController.testAdmin()}"
-                                     rendered="#{persoonController.isAdmin()}"/>
+                                   action="#{reisController.testAdmin()}"
+                                   rendered="#{persoonController.isAdmin()}"/>
                 </li>
                 <li>
                     <h:commandLink styleClass="btn-login navbar-line"
-                                     rendered="#{persoonController.isAangemeld()}"
-                                     action="#{persoonController.logout()}" value="Afmelden"/></li>
+                                   rendered="#{persoonController.isAangemeld()}"
+                                   action="#{persoonController.logout()}" value="Afmelden"/></li>
                 <li>
                     <h:commandLink styleClass="btn-login navbar-line"
-                                     rendered="#{!persoonController.isAangemeld()}"
-                                     value="Login" action="login"/>
+                                   rendered="#{!persoonController.isAangemeld()}"
+                                   value="Login" action="login"/>
                 </li>
             </ul>
         </h:form>

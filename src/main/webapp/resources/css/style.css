@@ -34,10 +34,6 @@ div.dataTables_wrapper div.dataTables_filter label {
     text-align: right !important;
 }
 
-td {
-    background-color: rgb(88, 19, 0) !important;
-}
-
 .tabel td{
     background-color: #565859;
 }
@@ -73,7 +69,14 @@ td {
     border: none !important;
     color: white !important;
     height: 22px !important;
-    z-index: 999;
+}
+
+.btn-home {
+    color: white !important;
+    font-weight: bold;;
+    font-size: 2em;
+    padding: 5px;
+    text-decoration: none;
 }
 
 .navbar-line {
@@ -90,6 +93,7 @@ td {
     height: 4.5rem;
     width: 100%;
     padding: 0;
+    z-index: 9999;
 }
 
 .navbar {
