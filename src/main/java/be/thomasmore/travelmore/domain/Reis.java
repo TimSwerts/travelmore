@@ -10,7 +10,7 @@ import java.util.List;
         {
                 @NamedQuery(
                         name = Reis.FIND_ALL_BY_VERTREK_BESTEMMING,
-                        query = "SELECT r from Reis r where r.bestemming.land.id = (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.land.id = (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
+                        query = "SELECT r from Reis r where r.bestemming.land.id in (SELECT s.land.id from Stad s where s.land.id = :bestemmingsLandID) AND r.vertreklocatie.land.id in (SELECT s.land.id from Stad s where s.land.id = :vertrekLandID)"
                 ),
                 @NamedQuery(
                         name = Reis.FIND_ALL,
